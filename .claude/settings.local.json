@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git init:*)",
+      "Bash(gh:*)",
+      "Bash(git remote add:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(composer dev:*)",
+      "Bash(php --version:*)",
+      "Bash(where:*)",
+      "Bash(\"/c/Users/ASUS/.config/herd/bin/composer.bat\" --version)",
+      "Bash(\"/c/Users/ASUS/.config/herd/bin/composer.bat\" dev)",
+      "Bash(node --version:*)",
+      "Bash(php artisan serve:*)",
+      "Bash(npm run dev:*)",
+      "Bash(php artisan:*)",
+      "Bash(curl:*)",
+      "Bash(php -r:*)",
+      "Bash(cat:*)",
+      "Bash(php -i:*)",
+      "Bash(netstat:*)",
+      "Bash(chmod:*)",
+      "Bash(taskkill //F //PID 69064)",
+      "Bash(\"/c/Users/ASUS/.config/herd/bin/composer.bat\" require laravel/breeze --dev)",
+      "Bash(npm uninstall:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
