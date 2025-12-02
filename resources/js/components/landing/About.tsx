@@ -52,9 +52,9 @@ export default function About() {
                         <div className="relative rounded-2xl overflow-hidden aspect-square bg-gradient-to-br from-primary/20 to-purple-500/20 p-1">
                             <div className="absolute inset-0 bg-card/50 backdrop-blur-3xl" />
                             <div className="relative h-full w-full bg-card rounded-xl flex items-center justify-center border border-border overflow-hidden">
-                                <img 
-                                    src="/images/team.png" 
-                                    alt="Hard Rock Team" 
+                                <img
+                                    src="/images/team.png"
+                                    alt="Hard Rock Team"
                                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                                 />
                             </div>

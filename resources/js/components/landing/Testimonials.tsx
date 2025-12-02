@@ -5,25 +5,29 @@ const testimonials = [
         quote: "Hard Rock transformed our marketing strategy completely. The AI insights are game-changing for the Saudi market.",
         author: "Ahmed Al-Sayed",
         role: "CMO, Riyadh Tech",
-        image: "/images/testimonials/ahmed.png"
+        initials: "AA",
+        color: "bg-blue-500"
     },
     {
         quote: "The ROI we've seen since partnering with them is incredible. Highly recommended for startups in Jordan.",
         author: "Layla Mahmoud",
         role: "Founder, Amman Innovations",
-        image: "/images/testimonials/layla.png"
+        initials: "LM",
+        color: "bg-purple-500"
     },
     {
         quote: "Finally, an agency that understands both creativity and data. A perfect match for our expansion plans.",
         author: "Omar Khalid",
         role: "Director of Marketing, Jeddah Corp",
-        image: "/images/testimonials/omar.png"
+        initials: "OK",
+        color: "bg-green-500"
     },
     {
         quote: "Their automated workflows saved us hundreds of hours. The efficiency is unmatched in the region.",
         author: "Sara Al-Amri",
         role: "COO, Future Vision KSA",
-        image: "/images/testimonials/sara.png"
+        initials: "SA",
+        color: "bg-pink-500"
     }
 ];
 
@@ -44,11 +48,9 @@ export default function Testimonials() {
                         >
                             <p className="text-lg mb-6">"{testimonial.quote}"</p>
                             <div className="flex items-center gap-4">
-                                <img 
-                                    src={testimonial.image} 
-                                    alt={testimonial.author} 
-                                    className="w-12 h-12 rounded-full object-cover"
-                                />
+                                <div className={`w-12 h-12 rounded-full ${testimonial.color} flex items-center justify-center text-white font-semibold`}>
+                                    {testimonial.initials}
+                                </div>
                                 <div className="text-left">
                                     <h4 className="font-semibold">{testimonial.author}</h4>
                                     <p className="text-sm text-muted-foreground">{testimonial.role}</p>
@@ -66,11 +68,9 @@ export default function Testimonials() {
                         >
                             <p className="text-lg mb-6">"{testimonial.quote}"</p>
                             <div className="flex items-center gap-4">
-                                <img 
-                                    src={testimonial.image} 
-                                    alt={testimonial.author} 
-                                    className="w-12 h-12 rounded-full object-cover"
-                                />
+                                <div className={`w-12 h-12 rounded-full ${testimonial.color} flex items-center justify-center text-white font-semibold`}>
+                                    {testimonial.initials}
+                                </div>
                                 <div className="text-left">
                                     <h4 className="font-semibold">{testimonial.author}</h4>
                                     <p className="text-sm text-muted-foreground">{testimonial.role}</p>
