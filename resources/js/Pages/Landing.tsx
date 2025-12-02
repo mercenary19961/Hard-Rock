@@ -1,13 +1,13 @@
 import { Head } from '@inertiajs/react';
-import Navbar from '@/Components/landing/Navbar';
-import Hero from '@/Components/landing/Hero';
-import Services from '@/Components/landing/Services';
-import Testimonials from '@/Components/landing/Testimonials';
-import About from '@/Components/landing/About';
-import TechnicalCapabilities from '@/Components/landing/TechnicalCapabilities';
-import Contact from '@/Components/landing/Contact';
-import Footer from '@/Components/landing/Footer';
-import SmoothScroll from '@/Components/SmoothScroll';
+import Navbar from '@/components/landing/Navbar';
+import Hero from '@/components/landing/Hero';
+import Services from '@/components/landing/Services';
+import Testimonials from '@/components/landing/Testimonials';
+import About from '@/components/landing/About';
+import TechnicalCapabilities from '@/components/landing/TechnicalCapabilities';
+import Contact from '@/components/landing/Contact';
+import Footer from '@/components/landing/Footer';
+import SmoothScroll from '@/components/SmoothScroll';
 
 export default function Landing() {
     return (

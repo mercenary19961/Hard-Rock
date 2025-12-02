@@ -1,0 +1,51 @@
+resources/js/components/app-header.tsx(30,29): error TS2307: Cannot find module '@/hooks/use-initials' or its corresponding type declarations.
+resources/js/components/app-header.tsx(32,27): error TS2307: Cannot find module '@/routes' or its corresponding type declarations.
+resources/js/components/app-header.tsx(33,15): error TS2305: Module '"@/types"' has no exported member 'BreadcrumbItem'.
+resources/js/components/app-header.tsx(33,36): error TS2305: Module '"@/types"' has no exported member 'NavItem'.
+resources/js/components/app-header.tsx(33,50): error TS2305: Module '"@/types"' has no exported member 'SharedData'.
+resources/js/components/app-shell.tsx(2,10): error TS2305: Module '"@/types"' has no exported member 'SharedData'.
+resources/js/components/app-sidebar-header.tsx(3,15): error TS2305: Module '"@/types"' has no exported member 'BreadcrumbItem'.
+resources/js/components/app-sidebar.tsx(13,27): error TS2307: Cannot find module '@/routes' or its corresponding type declarations.
+resources/js/components/app-sidebar.tsx(14,15): error TS2305: Module '"@/types"' has no exported member 'NavItem'.
+resources/js/components/appearance-dropdown.tsx(8,31): error TS2307: Cannot find module '@/hooks/use-appearance' or its corresponding type declarations.
+resources/js/components/appearance-tabs.tsx(1,43): error TS2307: Cannot find module '@/hooks/use-appearance' or its corresponding type declarations.
+resources/js/components/breadcrumbs.tsx(9,15): error TS2305: Module '"@/types"' has no exported member 'BreadcrumbItem'.
+resources/js/components/delete-user.tsx(1,31): error TS2307: Cannot find module '@/actions/App/Http/Controllers/Settings/ProfileController' or its corresponding type declarations.
+resources/js/components/nav-footer.tsx(10,15): error TS2305: Module '"@/types"' has no exported member 'NavItem'.
+resources/js/components/nav-main.tsx(9,15): error TS2305: Module '"@/types"' has no exported member 'NavItem'.
+resources/js/components/nav-user.tsx(15,15): error TS2305: Module '"@/types"' has no exported member 'SharedData'.
+resources/js/components/SmoothScroll.tsx(1,19): error TS2307: Cannot find module 'lenis' or its corresponding type declarations.
+resources/js/components/SmoothScroll.tsx(14,22): error TS7006: Parameter 't' implicitly has an 'any' type.
+resources/js/components/two-factor-recovery-codes.tsx(9,41): error TS2307: Cannot find module '@/routes/two-factor' or its corresponding type declarations.
+resources/js/components/two-factor-setup-modal.tsx(15,30): error TS2307: Cannot find module '@/hooks/use-clipboard' or its corresponding type declarations.
+resources/js/components/two-factor-setup-modal.tsx(16,32): error TS2307: Cannot find module '@/hooks/use-two-factor-auth' or its corresponding type declarations.
+resources/js/components/two-factor-setup-modal.tsx(17,25): error TS2307: Cannot find module '@/routes/two-factor' or its corresponding type declarations.
+resources/js/components/two-factor-setup-modal.tsx(19,36): error TS2307: Cannot find module 'input-otp' or its corresponding type declarations.
+resources/js/components/two-factor-setup-modal.tsx(309,46): error TS7006: Parameter 'open' implicitly has an 'any' type.
+resources/js/components/ui/alert.tsx(2,40): error TS2307: Cannot find module 'class-variance-authority' or its corresponding type declarations.
+resources/js/components/ui/badge.tsx(3,40): error TS2307: Cannot find module 'class-variance-authority' or its corresponding type declarations.
+resources/js/components/ui/button.tsx(3,40): error TS2307: Cannot find module 'class-variance-authority' or its corresponding type declarations.
+resources/js/components/ui/checkbox.tsx(2,36): error TS2307: Cannot find module '@radix-ui/react-checkbox' or its corresponding type declarations.
+resources/js/components/ui/collapsible.tsx(1,39): error TS2307: Cannot find module '@radix-ui/react-collapsible' or its corresponding type declarations.
+resources/js/components/ui/dialog.tsx(2,34): error TS2307: Cannot find module '@radix-ui/react-dialog' or its corresponding type declarations.
+resources/js/components/ui/dropdown-menu.tsx(2,40): error TS2307: Cannot find module '@radix-ui/react-dropdown-menu' or its corresponding type declarations.
+resources/js/components/ui/input-otp.tsx(2,43): error TS2307: Cannot find module 'input-otp' or its corresponding type declarations.
+resources/js/components/ui/input-otp.tsx(36,44): error TS18046: 'inputOTPContext' is of type 'unknown'.
+resources/js/components/ui/label.tsx(2,33): error TS2307: Cannot find module '@radix-ui/react-label' or its corresponding type declarations.
+resources/js/components/ui/navigation-menu.tsx(2,42): error TS2307: Cannot find module '@radix-ui/react-navigation-menu' or its corresponding type declarations.
+resources/js/components/ui/navigation-menu.tsx(3,21): error TS2307: Cannot find module 'class-variance-authority' or its corresponding type declarations.
+resources/js/components/ui/select.tsx(2,34): error TS2307: Cannot find module '@radix-ui/react-select' or its corresponding type declarations.
+resources/js/components/ui/separator.tsx(2,37): error TS2307: Cannot find module '@radix-ui/react-separator' or its corresponding type declarations.
+resources/js/components/ui/sheet.tsx(2,33): error TS2307: Cannot find module '@radix-ui/react-dialog' or its corresponding type declarations.
+resources/js/components/ui/sidebar.tsx(3,35): error TS2307: Cannot find module 'class-variance-authority' or its corresponding type declarations.
+resources/js/components/ui/sidebar.tsx(265,17): error TS7006: Parameter 'event' implicitly has an 'any' type.
+resources/js/components/ui/toggle-group.tsx(2,39): error TS2307: Cannot find module '@radix-ui/react-toggle-group' or its corresponding type declarations.
+resources/js/components/ui/toggle-group.tsx(3,35): error TS2307: Cannot find module 'class-variance-authority' or its corresponding type declarations.
+resources/js/components/ui/toggle.tsx(2,34): error TS2307: Cannot find module '@radix-ui/react-toggle' or its corresponding type declarations.
+resources/js/components/ui/toggle.tsx(3,40): error TS2307: Cannot find module 'class-variance-authority' or its corresponding type declarations.
+resources/js/components/ui/tooltip.tsx(2,35): error TS2307: Cannot find module '@radix-ui/react-tooltip' or its corresponding type declarations.
+resources/js/components/user-info.tsx(2,29): error TS2307: Cannot find module '@/hooks/use-initials' or its corresponding type declarations.
+resources/js/components/user-info.tsx(17,40): error TS2339: Property 'avatar' does not exist on type 'User'.
+resources/js/components/user-menu-content.tsx(8,37): error TS2307: Cannot find module '@/hooks/use-mobile-navigation' or its corresponding type declarations.
+resources/js/components/user-menu-content.tsx(9,24): error TS2307: Cannot find module '@/routes' or its corresponding type declarations.
+resources/js/components/user-menu-content.tsx(10,22): error TS2307: Cannot find module '@/routes/profile' or its corresponding type declarations.
