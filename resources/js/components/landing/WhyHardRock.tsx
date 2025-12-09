@@ -1,0 +1,75 @@
+import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
+
+export default function WhyHardRock() {
+    const { t, i18n } = useTranslation('whyHardRock');
+    const isArabic = i18n.language === 'ar';
+
+    return (
+        <section id="why-hardrock" className="relative pt-10 pb-20 md:pt-10 md:pb-64 overflow-hidden bg-white dark:bg-black">
+            {/* Background Blurs */}
+            <div className="absolute top-0 ltr:right-0 rtl:left-0 w-96 h-96 bg-purple-500/20 dark:bg-purple-500/30 rounded-full blur-[150px]" />
+            <div className="absolute bottom-0 ltr:left-0 rtl:right-0 w-96 h-96 bg-pink-500/20 dark:bg-pink-500/30 rounded-full blur-[150px]" />
+
+            <div className="relative z-10 w-full px-8 sm:px-12 lg:px-16 xl:px-20">
+                <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-center">
+                    {/* Image Column */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8 }}
+                        viewport={{ once: true }}
+                        className={`relative ${isArabic ? 'lg:order-2' : 'lg:order-1'}`}
+                    >
+                        <div className="relative w-full max-w-md mx-auto">
+                            {/* Gradient Circle Background */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-brand-purple to-brand-red rounded-full blur-2xl opacity-30" />
+
+                            {/* AI Head Image */}
+                            <img
+                                src="/images/why-hardrock.png"
+                                alt="Why HardRock"
+                                className="relative z-10 w-full h-auto drop-shadow-2xl"
+                            />
+                        </div>
+                    </motion.div>
+
+                    {/* Text Column */}
+                    <motion.div
+                        initial={{ opacity: 0, x: isArabic ? 50 : -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8 }}
+                        viewport={{ once: true }}
+                        className={`${isArabic ? 'lg:order-1 text-right' : 'lg:order-2 text-left'}`}
+                    >
+                        <h2 className={`text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-8 ${isArabic ? 'rtl:font-tajawal' : ''}`}>
+                            <span className="text-black dark:text-white">
+                                {t('title.line1')}
+                            </span>
+                            <br />
+                            <span className="bg-gradient-to-r from-brand-purple to-brand-red bg-clip-text text-transparent">
+                                {t('title.line2')}
+                            </span>
+                        </h2>
+
+                        <div className={`space-y-6 text-gray-700 dark:text-gray-300 ${
+                            isArabic
+                                ? 'text-lg md:text-xl lg:text-2xl xl:text-3xl leading-relaxed rtl:font-tajawal rtl:font-light'
+                                : 'text-lg md:text-xl lg:text-2xl leading-relaxed'
+                        }`}>
+                            <p>
+                                {t('paragraph1')}
+                            </p>
+
+                            {isArabic && (
+                                <p>
+                                    {t('paragraph2')}
+                                </p>
+                            )}
+                        </div>
+                    </motion.div>
+                </div>
+            </div>
+        </section>
+    );
+}

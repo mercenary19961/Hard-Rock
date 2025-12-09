@@ -1,6 +1,7 @@
 import { Head } from '@inertiajs/react';
 import Navbar from '@/components/landing/Navbar';
 import Hero from '@/components/landing/Hero';
+import WhyHardRock from '@/components/landing/WhyHardRock';
 import Services from '@/components/landing/Services';
 import Testimonials from '@/components/landing/Testimonials';
 import About from '@/components/landing/About';
@@ -67,6 +68,7 @@ export default function Landing() {
                     
                     <main>
                         <Hero />
+                        <WhyHardRock />
                         <Services />
                         <Testimonials />
                         <About />

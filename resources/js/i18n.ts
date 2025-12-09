@@ -5,8 +5,10 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 // Import translations
 import enCommon from './locales/en/common.json';
 import enHero from './locales/en/hero.json';
+import enWhyHardRock from './locales/en/whyHardRock.json';
 import arCommon from './locales/ar/common.json';
 import arHero from './locales/ar/hero.json';
+import arWhyHardRock from './locales/ar/whyHardRock.json';
 
 i18n
   .use(LanguageDetector) // Detect user language
@@ -16,10 +18,12 @@ i18n
       en: {
         common: enCommon,
         hero: enHero,
+        whyHardRock: enWhyHardRock,
       },
       ar: {
         common: arCommon,
         hero: arHero,
+        whyHardRock: arWhyHardRock,
       },
     },
     fallbackLng: 'en', // Default language
