@@ -67,6 +67,13 @@ export default {
             animation: {
                 float: 'float 6s ease-in-out infinite',
             },
+            screens: {
+                xs: '475px',
+            },
+            fontSize: {
+                xxs: '0.65rem',
+                tiny: '0.7rem',
+            },
         },
     },
 

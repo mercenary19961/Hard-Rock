@@ -34,37 +34,56 @@ export default function Hero() {
                         transition={{ duration: 0.8 }}
                         className="text-center"
                     >
-                        <motion.h1
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            className="text-4xl md:text-5xl lg:text-7xl font-bold text-black dark:text-white text-center mb-6 rtl:font-tajawal rtl:font-bold"
-                            style={{ lineHeight: '1.5' }}
-                        >
-                            {isArabic ? (
-                                <>
+                        {isArabic ? (
+                            <motion.h1
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8, delay: 0.2 }}
+                                className="text-4xl md:text-5xl lg:text-7xl font-bold text-black dark:text-white text-center mb-6 rtl:font-tajawal rtl:font-bold"
+                                style={{ lineHeight: '1.5' }}
+                            >
+                                {t('title.line1')}<br />
+                                <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-purple-600 bg-clip-text text-transparent">
+                                    {t('title.line2')}
+                                </span><br />
+                                {t('title.gradient')}
+                            </motion.h1>
+                        ) : (
+                            <>
+                                <motion.h2
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.8, delay: 0.2 }}
+                                    className="text-2xl xs:text-2xl sm:text-4xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-black dark:text-white text-center mb-2"
+                                    style={{ lineHeight: '1.5' }}
+                                >
                                     {t('title.line1')}<br />
-                                    <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-purple-600 bg-clip-text text-transparent">
-                                        {t('title.line2')}
-                                    </span><br />
-                                    {t('title.gradient')}
-                                </>
-                            ) : (
-                                <>
-                                    {t('title.line1')}<br />
-                                    {t('title.line2')}<br />
+                                    {t('title.line2')}
+                                </motion.h2>
+
+                                <motion.h1
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.8, delay: 0.3 }}
+                                    className="text-4xl md:text-5xl lg:text-5xl xl:text-7xl font-bold text-center mb-4"
+                                    style={{ lineHeight: '1.5' }}
+                                >
                                     <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-purple-600 bg-clip-text text-transparent">
                                         {t('title.gradient')}
                                     </span>
-                                </>
-                            )}
-                        </motion.h1>
+                                </motion.h1>
+                            </>
+                        )}
 
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
-                            className="text-base md:text-xl lg:text-2xl text-gray-700 dark:text-gray-300 mb-12 max-w-md mx-auto text-center leading-relaxed rtl:font-tajawal rtl:font-extralight"
+                            className={`text-gray-700 dark:text-gray-300 mx-auto text-center leading-relaxed rtl:font-tajawal rtl:font-extralight ${
+                                isArabic
+                                    ? 'text-base md:text-xl lg:text-2xl mb-12 max-w-md'
+                                    : 'text-sm md:text-lg lg:text-1xl xl:text-2xl mb-10 max-w-xl'
+                            }`}
                         >
                             {t('subtitle')}
                         </motion.p>
@@ -74,7 +93,7 @@ export default function Hero() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.6 }}
                         >
-                            <button className="group bg-white dark:bg-white text-black border-2 border-gray-300 dark:border-transparent px-24 py-4 rounded-full text-xl md:text-2xl font-medium hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:scale-105 tracking-wide rtl:font-cairo">
+                            <button className="group bg-white dark:bg-white text-purple-500 border-2 border-gray-300 dark:border-transparent px-24 py-4 rounded-full text-xl md:text-2xl font-medium hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:scale-105 tracking-wide rtl:font-cairo">
                                 {t('cta')}
                             </button>
                         </motion.div>
