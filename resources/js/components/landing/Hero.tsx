@@ -9,19 +9,19 @@ export default function Hero() {
         <section className="relative min-h-screen flex items-center overflow-hidden bg-white dark:bg-black">
             {/* Purple Glow Background - Dark Mode */}
             <div className="absolute inset-0 overflow-hidden dark:block hidden">
-                <div className="absolute bottom-0 left-0 w-full h-[60%] bg-gradient-to-t from-purple-900/40 via-purple-600/20 to-transparent blur-3xl" />
+                {/* <div className="absolute bottom-0 left-0 w-full h-[60%] bg-gradient-to-t from-purple-900/40 via-purple-600/20 to-transparent blur-3xl" /> */}
                 <div className="absolute top-1/3 ltr:left-0 rtl:right-0 w-1/2 h-1/2 bg-gradient-to-r from-purple-600/30 to-transparent blur-[100px]" />
             </div>
 
             {/* Light Mode Background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white via-purple-50/30 to-pink-50/20 dark:hidden" />
+            {/* <div className="absolute inset-0 bg-gradient-to-br from-white via-purple-50/30 to-pink-50/20 dark:hidden" /> */}
 
             {/* Background Wave */}
-            <div className="absolute bottom-0 ltr:right-0 rtl:left-0 w-[60%] h-auto opacity-30 dark:opacity-40">
+            <div className="absolute ltr:bottom-0 ltr:left-0 rtl:bottom-0 rtl:right-0 w-[80%] lg:w-[60%] opacity-15 dark:opacity-25">
                 <img
                     src="/images/bg wave.png"
                     alt=""
-                    className="w-full h-auto object-contain"
+                    className="w-full h-auto object-contain ltr:rotate-[30deg] rtl:-rotate-[30deg] ltr:translate-x-[-20%] ltr:translate-y-[20%] rtl:translate-x-[20%] rtl:translate-y-[20%]"
                 />
             </div>
 
@@ -89,7 +89,7 @@ export default function Hero() {
                     >
                         <div className="relative w-full max-w-lg">
                             {/* Glow effect behind image */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-pink-500/30 via-purple-500/30 to-purple-600/30 blur-[80px] rounded-full" />
+                            <div className="absolute inset-0 bg-gradient-to-br from-pink-500/30 via-purple-500/30 to-purple-600/30 blur-[85px] rounded-full" />
 
                             {/* Hero Icon */}
                             <img

@@ -40,7 +40,7 @@ export default function Navbar() {
                             <a
                                 key={link.name}
                                 href={link.href}
-                                className="text-black/90 dark:text-white/90 hover:text-black dark:hover:text-white transition-colors duration-200 text-base font-medium rtl:font-tajawal rtl:font-normal"
+                                className="text-black/90 dark:text-white/90 hover:text-purple-500 dark:hover:text-purple-500 transition-colors duration-200 text-base font-medium rtl:font-tajawal rtl:font-normal"
                             >
                                 {link.name}
                             </a>
@@ -50,7 +50,7 @@ export default function Navbar() {
                         <ThemeToggle />
                         <LanguageSwitcher />
 
-                        <button className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-2.5 rounded-full text-base font-medium hover:shadow-lg hover:shadow-pink-500/50 transition-all duration-300">
+                        <button className="bg-gradient-to-r from-pink-800 to-purple-800 text-white px-6 py-2.5 rounded-full text-base font-medium hover:shadow-lg hover:shadow-pink-500/50 transition-all duration-300">
                             {t('nav.contactUs')}
                         </button>
                     </div>
