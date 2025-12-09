@@ -6,10 +6,13 @@ export default function WhyHardRock() {
     const isArabic = i18n.language === 'ar';
 
     return (
-        <section id="why-hardrock" className="relative pt-10 pb-20 md:pt-10 md:pb-64 overflow-hidden bg-white dark:bg-black">
-            {/* Background Blurs */}
-            <div className="absolute top-0 ltr:right-0 rtl:left-0 w-96 h-96 bg-purple-500/20 dark:bg-purple-500/30 rounded-full blur-[150px]" />
-            <div className="absolute bottom-0 ltr:left-0 rtl:right-0 w-96 h-96 bg-pink-500/20 dark:bg-pink-500/30 rounded-full blur-[150px]" />
+        <section id="why-hardrock" className="relative pt-15 pb-20 md:pt-20 md:pb-64 overflow-hidden bg-white dark:bg-black">
+            {/* Background Blurs - Small Circles */}
+            <div className="absolute top-10 ltr:right-20 rtl:left-20 w-32 h-32 bg-purple-500/30 dark:bg-purple-500/40 rounded-full blur-3xl" />
+            <div className="absolute top-40 ltr:right-60 rtl:left-60 w-24 h-24 bg-pink-500/25 dark:bg-pink-500/35 rounded-full blur-2xl" />
+            <div className="absolute bottom-20 ltr:left-10 rtl:right-10 w-40 h-40 bg-pink-500/30 dark:bg-pink-500/40 rounded-full blur-3xl" />
+            <div className="absolute bottom-60 ltr:left-40 rtl:right-40 w-28 h-28 bg-purple-500/25 dark:bg-purple-500/35 rounded-full blur-2xl" />
+            <div className="absolute top-1/2 ltr:right-32 rtl:left-32 w-36 h-36 bg-red-500/20 dark:bg-red-500/30 rounded-full blur-3xl" />
 
             <div className="relative z-10 w-full px-8 sm:px-12 lg:px-16 xl:px-20">
                 <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-center">
@@ -19,7 +22,7 @@ export default function WhyHardRock() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
-                        className={`relative ${isArabic ? 'lg:order-2' : 'lg:order-1'}`}
+                        className={`relative ${isArabic ? 'lg:order-1' : 'lg:order-1'}`}
                     >
                         <div className="relative w-full max-w-md mx-auto">
                             {/* Gradient Circle Background */}
@@ -40,7 +43,7 @@ export default function WhyHardRock() {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
-                        className={`${isArabic ? 'lg:order-1 text-right' : 'lg:order-2 text-left'}`}
+                        className={`${isArabic ? 'lg:order-2 text-right' : 'lg:order-2 text-left'}`}
                     >
                         <h2 className={`text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-8 ${isArabic ? 'rtl:font-tajawal' : ''}`}>
                             <span className="text-black dark:text-white">
