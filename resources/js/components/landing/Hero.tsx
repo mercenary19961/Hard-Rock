@@ -17,7 +17,7 @@ export default function Hero() {
             {/* <div className="absolute inset-0 bg-gradient-to-br from-white via-purple-50/30 to-pink-50/20 dark:hidden" /> */}
 
             {/* Background Wave */}
-            <div className="absolute ltr:bottom-12 ltr:left-0 rtl:bottom-0 rtl:right-0 ltr:origin-bottom-left rtl:origin-bottom-right w-[80%] lg:w-[60%] opacity-40 dark:opacity-40">
+            <div className="absolute ltr:bottom-12 ltr:left-0 rtl:bottom-0 rtl:right-0 ltr:origin-bottom-left rtl:origin-bottom-right w-[80%] lg:w-[60%] opacity-15 dark:opacity-40">
                 <img
                     src="/images/bg wave.png"
                     alt=""
@@ -113,7 +113,7 @@ export default function Hero() {
                     >
                         <div className="relative w-full max-w-lg">
                             {/* Glow effect behind image */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-pink-500/30 via-purple-500/30 to-purple-600/30 blur-[85px] rounded-full" />
+                            <div className="absolute inset-12 bg-gradient-to-br from-pink-500/30 via-purple-500/30 to-purple-600/30 blur-[85px] rounded-full" />
 
                             {/* Hero Icon */}
                             <img
