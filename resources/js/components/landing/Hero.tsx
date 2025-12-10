@@ -39,7 +39,7 @@ export default function Hero() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, delay: 0.2 }}
-                                className="text-4xl md:text-5xl lg:text-7xl font-bold text-black dark:text-white text-center mb-6 rtl:font-tajawal rtl:font-bold"
+                                className="text-2xl xs:text-2xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-7xl font-bold text-black dark:text-white text-center mb-6 font-tajawal"
                                 style={{ lineHeight: '1.5' }}
                             >
                                 {t('title.line1')}<br />
@@ -54,7 +54,7 @@ export default function Hero() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.8, delay: 0.2 }}
-                                    className="text-2xl xs:text-2xl sm:text-4xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-black dark:text-white text-center mb-2"
+                                    className="text-2xl xs:text-2xl sm:text-4xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-black dark:text-white text-center mb-2 font-sf-pro"
                                     style={{ lineHeight: '1.5' }}
                                 >
                                     {t('title.line1')}<br />
@@ -65,7 +65,7 @@ export default function Hero() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.8, delay: 0.3 }}
-                                    className="text-4xl md:text-5xl lg:text-5xl xl:text-7xl font-bold text-center mb-4"
+                                    className="text-4xl md:text-5xl lg:text-5xl xl:text-7xl font-bold text-center mb-4 font-sf-pro"
                                     style={{ lineHeight: '1.5' }}
                                 >
                                     <span className="bg-gradient-to-r from-brand-purple to-brand-red bg-clip-text text-transparent">
@@ -79,10 +79,10 @@ export default function Hero() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
-                            className={`text-gray-700 dark:text-gray-300 mx-auto text-center leading-relaxed rtl:font-tajawal rtl:font-extralight ${
+                            className={`text-gray-700 dark:text-gray-300 mx-auto text-center leading-relaxed ${
                                 isArabic
-                                    ? 'text-base md:text-xl lg:text-2xl mb-12 max-w-md'
-                                    : 'text-sm md:text-lg lg:text-1xl xl:text-2xl mb-10 max-w-xl'
+                                    ? 'text-base md:text-lg lg:text-xl xl:text-2xl mb-12 max-w-md font-tajawal font-extralight'
+                                    : 'text-sm md:text-lg lg:text-1xl xl:text-2xl mb-10 max-w-xl font-sf-pro font-thin'
                             }`}
                         >
                             {t('subtitle')}
@@ -93,7 +93,9 @@ export default function Hero() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.6 }}
                         >
-                            <button className="group relative bg-white dark:bg-white border-2 border-brand-purple dark:border-brand-purple px-10 py-4 md:px-24 rounded-full text-xl md:text-2xl font-medium hover:shadow-2xl hover:shadow-brand-red/20 transition-all duration-300 hover:scale-105 tracking-wide rtl:font-cairo hover:border-transparent dark:hover:border-transparent overflow-hidden">
+                            <button className={`group relative bg-white dark:bg-white border-2 border-brand-purple dark:border-brand-purple px-10 py-4 sm:px-16 md:px-24 rounded-full text-xl md:text-2xl font-light hover:shadow-2xl hover:shadow-brand-red/20 transition-all duration-300 hover:scale-105 tracking-wide hover:border-transparent dark:hover:border-transparent overflow-hidden ${
+                                isArabic ? 'font-cairo' : 'font-sf-pro'
+                            }`}>
                                 <div className="absolute inset-0 bg-gradient-to-r from-brand-purple to-brand-red opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
                                 <span className="relative z-10 bg-gradient-to-r from-brand-purple to-brand-red bg-clip-text text-transparent group-hover:text-white transition-all duration-300">
                                     {t('cta')}

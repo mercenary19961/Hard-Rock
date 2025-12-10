@@ -17,6 +17,8 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
                 tajawal: ['Tajawal', 'sans-serif'],
                 cairo: ['Cairo', 'sans-serif'],
+                poppins: ['Poppins', 'sans-serif'],
+                'sf-pro': ['SF Pro', 'sans-serif'],
             },
             colors: {
                 border: 'hsl(var(--border))',
