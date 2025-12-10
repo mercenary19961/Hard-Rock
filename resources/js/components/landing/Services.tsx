@@ -43,38 +43,39 @@ export default function Services() {
             <div className="absolute top-1/2 ltr:left-1/3 rtl:right-1/3 w-32 h-32 bg-red-500/15 dark:bg-red-500/25 rounded-full blur-3xl" />
 
             <div className="relative z-10 w-full px-8 sm:px-12 lg:px-16 xl:px-20">
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
                     {/* Services List - Left for English, Right for Arabic */}
                     <motion.div
                         initial={{ opacity: 0, x: isArabic ? 50 : -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
-                        className={`space-y-4 ${isArabic ? 'lg:order-2' : 'lg:order-1'}`}
+                        className={`space-y-6 ${isArabic ? 'lg:order-2' : 'lg:order-1'}`}
                     >
                         {services.map((service) => {
                             const isSelected = selectedService.id === service.id;
 
                             return (
-                                <button
-                                    key={service.id}
-                                    onClick={() => setSelectedService(service)}
-                                    className={`w-full text-left rtl:text-right px-6 py-4 rounded-2xl transition-all duration-300 ${
-                                        isSelected
-                                            ? 'bg-gradient-to-r from-brand-purple to-brand-red shadow-lg shadow-brand-purple/30'
-                                            : 'bg-transparent border-2 border-gray-300 dark:border-white/20 hover:border-brand-purple dark:hover:border-brand-purple'
-                                    } ${
-                                        isArabic
-                                            ? isSelected
-                                                ? 'font-tajawal font-light text-white'
-                                                : 'font-tajawal font-extralight text-black dark:text-white'
-                                            : isSelected
-                                                ? 'font-poppins font-light text-white'
-                                                : 'font-poppins font-extralight text-black dark:text-white'
-                                    } text-lg md:text-xl lg:text-2xl`}
-                                >
-                                    {service.name}
-                                </button>
+                                <div key={service.id} className="flex">
+                                    <button
+                                        onClick={() => setSelectedService(service)}
+                                        className={`text-left rtl:text-right px-8 py-6 rounded-full transition-all duration-300 ${
+                                            isSelected
+                                                ? 'bg-gradient-to-r from-brand-purple to-brand-red shadow-lg shadow-brand-purple/30'
+                                                : 'bg-transparent hover:bg-gray-100 dark:hover:bg-white/5'
+                                        } ${
+                                            isArabic
+                                                ? isSelected
+                                                    ? 'font-tajawal font-light text-white'
+                                                    : 'font-tajawal font-extralight text-black dark:text-white'
+                                                : isSelected
+                                                    ? 'font-poppins font-light text-white'
+                                                    : 'font-poppins font-extralight text-black dark:text-white'
+                                        } text-lg md:text-xl lg:text-2xl xl:text-3xl`}
+                                    >
+                                        {service.name}
+                                    </button>
+                                </div>
                             );
                         })}
                     </motion.div>
@@ -88,7 +89,7 @@ export default function Services() {
                         className={`${isArabic ? 'lg:order-1 text-right' : 'lg:order-2 text-left'}`}
                     >
                         {/* Title */}
-                        <h1 className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-8 md:mb-12 ${
+                        <h1 className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-10 md:mb-12 ${
                             isArabic ? 'font-tajawal' : 'font-sf-pro'
                         }`}>
                             <span className="text-black dark:text-white">
@@ -107,7 +108,8 @@ export default function Services() {
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 transition={{ duration: 0.5 }}
-                                className="relative w-full max-w-md mx-auto lg:mx-0 rtl:lg:ml-auto mb-8"
+                                className="relative w-full max-w-sm mx-auto lg:mx-0 rtl:lg:ml-auto mb-8"
+                                style={{ height: '280px' }}
                             >
                                 {/* Glow effect */}
                                 <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/20 to-brand-red/20 rounded-full blur-2xl" />
@@ -116,14 +118,14 @@ export default function Services() {
                                 <img
                                     src={currentImage.light}
                                     alt={selectedService.name}
-                                    className="relative z-10 w-full h-auto drop-shadow-2xl dark:hidden"
+                                    className="relative z-10 w-full h-full object-contain drop-shadow-2xl dark:hidden"
                                 />
 
                                 {/* Dark mode image */}
                                 <img
                                     src={currentImage.dark}
                                     alt={selectedService.name}
-                                    className="relative z-10 w-full h-auto drop-shadow-2xl hidden dark:block"
+                                    className="relative z-10 w-full h-full object-contain drop-shadow-2xl hidden dark:block"
                                 />
                             </motion.div>
                         </AnimatePresence>
@@ -136,11 +138,12 @@ export default function Services() {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -20 }}
                                 transition={{ duration: 0.5 }}
+                                style={{ minHeight: '180px' }}
                             >
                                 <p className={`text-gray-700 dark:text-gray-300 mb-6 leading-relaxed ${
                                     isArabic
-                                        ? 'text-lg md:text-xl lg:text-2xl font-tajawal font-normal'
-                                        : 'text-base md:text-lg lg:text-xl font-poppins font-normal'
+                                        ? 'text-lg md:text-xl lg:text-2xl xl:text-3xl font-tajawal font-normal'
+                                        : 'text-base md:text-lg lg:text-xl xl:text-2xl font-poppins font-normal'
                                 }`}>
                                     {selectedService.description}
                                 </p>
