@@ -17,7 +17,7 @@ export default function Navbar() {
     ];
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-black/90 backdrop-blur-md border-b-2" style={{ borderImage: 'linear-gradient(to right, #704399, #C93727) 1' }}>
+        <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-black/90 backdrop-blur-md border-b-2" style={{ borderImage: 'linear-gradient(to right, rgba(112, 67, 153, 0.6), rgba(201, 55, 39, 0.6)) 1' }}>
             <div className="w-full px-8 sm:px-12 lg:px-16 xl:px-20">
                 <div className="flex items-center justify-between h-20">
                     {/* Logo */}
@@ -47,12 +47,12 @@ export default function Navbar() {
                         ))}
 
                         {/* Theme & Language Toggles */}
-                        <ThemeToggle />
-                        <LanguageSwitcher />
 
                         <button className="bg-gradient-to-r from-brand-purple to-brand-red text-white px-4 lg:px-6 py-2 lg:py-2.5 rounded-full text-sm lg:text-base font-medium hover:shadow-lg hover:shadow-brand-red/50 transition-all duration-300">
                             {t('nav.contactUs')}
                         </button>
+                        <ThemeToggle />
+                        <LanguageSwitcher />
                     </div>
 
                     {/* Mobile menu button */}
