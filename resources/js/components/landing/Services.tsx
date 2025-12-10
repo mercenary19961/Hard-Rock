@@ -78,7 +78,7 @@ export default function Services() {
             <div className="absolute top-1/2 ltr:left-1/3 rtl:right-1/3 w-32 h-32 bg-red-500/15 dark:bg-red-500/25 rounded-full blur-3xl" />
 
             <div className="relative z-10 w-full px-8 sm:px-12 lg:px-16 xl:px-20">
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start" dir="ltr">
                     {/* Services List - Left for English, Right for Arabic */}
                     <motion.div
                         initial={{ opacity: 0, x: isArabic ? 50 : -50 }}
@@ -86,6 +86,7 @@ export default function Services() {
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
                         className={`space-y-6 ${isArabic ? 'lg:order-2' : 'lg:order-1'}`}
+                        dir={isArabic ? 'rtl' : 'ltr'}
                     >
                         {services.map((service) => {
                             const isSelected = selectedService.id === service.id;
@@ -122,6 +123,7 @@ export default function Services() {
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
                         className={`${isArabic ? 'lg:order-1 text-right' : 'lg:order-2 text-left'}`}
+                        dir={isArabic ? 'rtl' : 'ltr'}
                     >
                         {/* Title */}
                         <h1 className={`text-4xl md:text-5xl lg:text-5xl xl:text-7xl font-black mb-10 md:mb-12 ${
@@ -129,8 +131,8 @@ export default function Services() {
                         }`}>
                             {isArabic ? (
                                 <>
-                                    <span className="text-black dark:text-white">ماذا </span>
-                                    <span className="bg-gradient-to-r from-brand-purple to-brand-red bg-clip-text text-transparent">نقدم</span>
+                                    <span className="text-black dark:text-white">مـــــــــاذا </span>
+                                    <span className="bg-gradient-to-r from-brand-purple to-brand-red bg-clip-text text-transparent">نقـــــــــــــــدم</span>
                                     <span className="text-black dark:text-white">؟</span>
                                 </>
                             ) : (
