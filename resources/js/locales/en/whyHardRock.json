@@ -3,5 +3,10 @@
     "line1": "Why",
     "line2": "HardRock?"
   },
-  "paragraph1": "Hard Rock is your trusted partner for digital transformation, combining technology, creativity, and strategic expertise to drive measurable growth across your business. We build integrated solutions across Software, AI, SEO, Digital Marketing and more, aligning every digital touch point for maximum efficiency and impact."
+  "paragraph1": "Hard Rock empowers digital transformation through strategic expertise, advanced technology, and creative thinking delivering integrated solutions across Software, AI, SEO, and Digital Marketing for measurable growth.",
+  "paragraph2": {
+    "part1": "We don't just deliver services, ",
+    "bold": "we stay with you",
+    "part2": ". Our expert team provides continuous consulting, follow-up, and after-sales support to ensure sustainable performance and long-term success."
+  }
 }

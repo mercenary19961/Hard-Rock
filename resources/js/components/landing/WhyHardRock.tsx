@@ -64,11 +64,13 @@ export default function WhyHardRock() {
                                 {t('paragraph1')}
                             </p>
 
-                            {isArabic && (
-                                <p>
-                                    {t('paragraph2')}
-                                </p>
-                            )}
+                            <p>
+                                {t('paragraph2.part1')}
+                                <span className="font-black">
+                                    {t('paragraph2.bold')}
+                                </span>
+                                {t('paragraph2.part2')}
+                            </p>
                         </div>
                     </motion.div>
                 </div>
