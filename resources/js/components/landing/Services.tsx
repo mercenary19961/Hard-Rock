@@ -125,93 +125,94 @@ export default function Services() {
                         className={`${isArabic ? 'lg:order-1 text-right' : 'lg:order-2 text-left'}`}
                         dir={isArabic ? 'rtl' : 'ltr'}
                     >
-                        {/* Title */}
-                        <h1 className={`text-4xl md:text-5xl lg:text-5xl xl:text-7xl font-black mb-10 md:mb-12 ${
-                            isArabic ? 'font-tajawal' : 'font-sf-pro'
-                        }`}>
-                            {isArabic ? (
-                                <>
-                                    <span className="text-black dark:text-white">مـــــــــاذا </span>
-                                    <span className="bg-gradient-to-r from-brand-purple to-brand-red bg-clip-text text-transparent">نقـــــــــــــــدم</span>
-                                    <span className="text-black dark:text-white">؟</span>
-                                </>
-                            ) : (
-                                <>
-                                    <span className="text-black dark:text-white">We Help You </span>
-                                    <span className="bg-gradient-to-r from-brand-purple to-brand-red bg-clip-text text-transparent">With</span>
-                                    <span className="text-black dark:text-white">.</span>
-                                </>
-                            )}
-                        </h1>
+                        <Link href={selectedService.link} className="block cursor-pointer group">
+                            {/* Title */}
+                            <h1 className={`text-4xl md:text-5xl lg:text-5xl xl:text-7xl font-black mb-10 md:mb-12 ${
+                                isArabic ? 'font-tajawal' : 'font-sf-pro'
+                            }`}>
+                                {isArabic ? (
+                                    <>
+                                        <span className="text-black dark:text-white">مـــــــــاذا </span>
+                                        <span className="bg-gradient-to-r from-brand-purple to-brand-red bg-clip-text text-transparent">نقـــــــــــــــدم</span>
+                                        <span className="text-black dark:text-white">؟</span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <span className="text-black dark:text-white">We Help You </span>
+                                        <span className="bg-gradient-to-r from-brand-purple to-brand-red bg-clip-text text-transparent">With</span>
+                                        <span className="text-black dark:text-white">.</span>
+                                    </>
+                                )}
+                            </h1>
 
-                        {/* Service Image with Animation */}
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={selectedService.id}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.9 }}
-                                transition={{ duration: 0.5 }}
-                                className="relative w-full max-w-sm mb-8 flex items-center justify-center"
-                                style={{
-                                    height: '280px',
-                                    marginLeft: imageMargin.left,
-                                    marginRight: imageMargin.right
-                                }}
-                            >
-                                {/* Glow effect */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/20 to-brand-red/20 rounded-full blur-2xl" />
-
-                                {/* Light mode image */}
-                                <img
-                                    src={currentImage.light}
-                                    alt={selectedService.name}
-                                    className="relative z-10 w-full h-full object-contain drop-shadow-2xl dark:hidden"
-                                />
-
-                                {/* Dark mode image */}
-                                <img
-                                    src={currentImage.dark}
-                                    alt={selectedService.name}
-                                    className="relative z-10 w-full h-full object-contain drop-shadow-2xl hidden dark:block"
-                                />
-                            </motion.div>
-                        </AnimatePresence>
-
-                        {/* Service Description with Animation */}
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={selectedService.id + '-text'}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -20 }}
-                                transition={{ duration: 0.5 }}
-                                style={{ minHeight: '180px' }}
-                                className="max-w-2xl"
-                            >
-                                <p
-                                    className={`text-gray-700 dark:text-gray-300 mb-6 ${
-                                        isArabic
-                                            ? 'text-lg md:text-xl lg:text-2xl xl:text-3xl font-tajawal font-normal'
-                                            : 'text-base md:text-lg lg:text-xl xl:text-2xl font-poppins font-normal'
-                                    }`}
-                                    style={{ lineHeight: '1.8' }}
+                            {/* Service Image with Animation */}
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={selectedService.id}
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0.9 }}
+                                    transition={{ duration: 0.5 }}
+                                    className="relative w-full max-w-sm mb-8 flex items-center justify-center"
+                                    style={{
+                                        height: '280px',
+                                        marginLeft: imageMargin.left,
+                                        marginRight: imageMargin.right
+                                    }}
                                 >
-                                    {selectedService.description}
-                                </p>
+                                    {/* Glow effect */}
+                                    <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/20 to-brand-red/20 rounded-full blur-2xl" />
 
-                                <Link
-                                    href={selectedService.link}
-                                    className={`inline-block text-brand-red hover:text-brand-purple transition-colors duration-300 ${
-                                        isArabic
-                                            ? 'text-lg md:text-xl font-tajawal font-medium'
-                                            : 'text-base md:text-lg font-poppins font-medium'
-                                    }`}
+                                    {/* Light mode image */}
+                                    <img
+                                        src={currentImage.light}
+                                        alt={selectedService.name}
+                                        className="relative z-10 w-full h-full object-contain drop-shadow-2xl dark:hidden transition-transform duration-300 group-hover:scale-105"
+                                    />
+
+                                    {/* Dark mode image */}
+                                    <img
+                                        src={currentImage.dark}
+                                        alt={selectedService.name}
+                                        className="relative z-10 w-full h-full object-contain drop-shadow-2xl hidden dark:block transition-transform duration-300 group-hover:scale-105"
+                                    />
+                                </motion.div>
+                            </AnimatePresence>
+
+                            {/* Service Description with Animation */}
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={selectedService.id + '-text'}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -20 }}
+                                    transition={{ duration: 0.5 }}
+                                    style={{ minHeight: '180px' }}
+                                    className="max-w-2xl"
                                 >
-                                    {t('learnMore')} →
-                                </Link>
-                            </motion.div>
-                        </AnimatePresence>
+                                    <p
+                                        className={`text-gray-700 dark:text-gray-300 mb-6 ${
+                                            isArabic
+                                                ? 'text-lg md:text-xl lg:text-2xl xl:text-3xl font-tajawal font-normal'
+                                                : 'text-base md:text-lg lg:text-xl xl:text-2xl font-poppins font-normal'
+                                        }`}
+                                        style={{ lineHeight: '1.8' }}
+                                    >
+                                        {selectedService.description}
+                                    </p>
+
+                                    <span
+                                        className={`inline-block text-brand-red group-hover:text-brand-purple transition-colors duration-300 ${
+                                            isArabic
+                                                ? 'text-lg md:text-xl font-tajawal font-medium'
+                                                : 'text-base md:text-lg font-poppins font-medium'
+                                        }`}
+                                    >
+                                        {t('learnMore')} →
+                                    </span>
+                                </motion.div>
+                            </AnimatePresence>
+                        </Link>
                     </motion.div>
                 </div>
             </div>
