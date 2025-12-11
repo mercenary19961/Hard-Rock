@@ -29,7 +29,7 @@ export default function Footer() {
                         {/* Social Media Icons */}
                         <div className="flex items-center gap-2">
                             <a
-                                href="https://twitter.com/hardrock"
+                                href="https://x.com/hardrock_agency"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="hover:opacity-80 transition-opacity"
@@ -37,7 +37,7 @@ export default function Footer() {
                                 <img src="/images/social-twitter.png" alt="Twitter" className="w-6 h-6" />
                             </a>
                             <a
-                                href="https://linkedin.com/company/hardrock"
+                                href="https://www.linkedin.com/company/hardrock-agency/?viewAsMember=true"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="hover:opacity-80 transition-opacity"
@@ -45,7 +45,7 @@ export default function Footer() {
                                 <img src="/images/social-linkedin.png" alt="LinkedIn" className="w-6 h-6" />
                             </a>
                             <a
-                                href="https://snapchat.com/add/hardrock"
+                                href="https://www.snapchat.com/add/hardrock_agency"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="hover:opacity-80 transition-opacity"
@@ -53,7 +53,7 @@ export default function Footer() {
                                 <img src="/images/social-snapchat.png" alt="Snapchat" className="w-6 h-6" />
                             </a>
                             <a
-                                href="https://instagram.com/hardrock"
+                                href="https://www.instagram.com/hardrock_agency/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="hover:opacity-80 transition-opacity"
@@ -61,7 +61,7 @@ export default function Footer() {
                                 <img src="/images/social-instagram.png" alt="Instagram" className="w-6 h-6" />
                             </a>
                             <a
-                                href="https://facebook.com/hardrock"
+                                href="https://web.facebook.com/profile.php?id=61584916708775"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="hover:opacity-80 transition-opacity"
@@ -224,7 +224,7 @@ export default function Footer() {
                         {/* Social Media Icons */}
                         <div className="flex items-center gap-2 md:gap-2.5 lg:gap-3">
                             <a
-                                href="https://twitter.com/hardrock"
+                                href="https://x.com/hardrock_agency"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="hover:opacity-80 transition-opacity"
@@ -232,7 +232,7 @@ export default function Footer() {
                                 <img src="/images/social-twitter.png" alt="Twitter" className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" />
                             </a>
                             <a
-                                href="https://linkedin.com/company/hardrock"
+                                href="https://www.linkedin.com/company/hardrock-agency/?viewAsMember=true"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="hover:opacity-80 transition-opacity"
@@ -240,7 +240,7 @@ export default function Footer() {
                                 <img src="/images/social-linkedin.png" alt="LinkedIn" className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" />
                             </a>
                             <a
-                                href="https://snapchat.com/add/hardrock"
+                                href="https://www.snapchat.com/add/hardrock_agency"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="hover:opacity-80 transition-opacity"
@@ -248,7 +248,7 @@ export default function Footer() {
                                 <img src="/images/social-snapchat.png" alt="Snapchat" className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" />
                             </a>
                             <a
-                                href="https://instagram.com/hardrock"
+                                href="https://www.instagram.com/hardrock_agency/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="hover:opacity-80 transition-opacity"
@@ -256,7 +256,7 @@ export default function Footer() {
                                 <img src="/images/social-instagram.png" alt="Instagram" className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" />
                             </a>
                             <a
-                                href="https://facebook.com/hardrock"
+                                href="https://web.facebook.com/profile.php?id=61584916708775"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="hover:opacity-80 transition-opacity"
