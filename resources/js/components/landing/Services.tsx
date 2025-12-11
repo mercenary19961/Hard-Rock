@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from '@inertiajs/react';
 
@@ -18,6 +18,24 @@ export default function Services() {
     }>;
 
     const [selectedService, setSelectedService] = useState(services[0]);
+    const serviceContentRef = useRef<HTMLDivElement>(null);
+
+    // Handle service selection with scroll on small screens
+    const handleServiceClick = (service: typeof services[0]) => {
+        setSelectedService(service);
+
+        // Scroll to content on small screens (< 1024px)
+        if (typeof window !== 'undefined' && window.innerWidth < 1024) {
+            setTimeout(() => {
+                if (serviceContentRef.current) {
+                    serviceContentRef.current.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }
+            }, 200);
+        }
+    };
 
     // Reset selected service when language changes
     useEffect(() => {
@@ -85,7 +103,7 @@ export default function Services() {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
-                        className={`space-y-6 flex flex-col ${isArabic ? 'lg:order-2 items-start lg:pr-36' : 'lg:order-1 items-start lg:ml-20'}`}
+                        className={`grid grid-cols-2 gap-4 mb-12 lg:mb-0 lg:flex lg:flex-col lg:space-y-6 ${isArabic ? 'lg:order-2 items-start lg:pr-36' : 'lg:order-1 items-start lg:ml-20'}`}
                         dir={isArabic ? 'rtl' : 'ltr'}
                     >
                         {services.map((service) => {
@@ -94,7 +112,7 @@ export default function Services() {
                             return (
                                 <button
                                         key={service.id}
-                                        onClick={() => setSelectedService(service)}
+                                        onClick={() => handleServiceClick(service)}
                                         className={`px-8 py-6 rounded-full transition-all duration-300 ${
                                             isSelected
                                                 ? 'bg-gradient-to-r from-brand-purple to-brand-red shadow-lg shadow-brand-purple/30'
@@ -116,15 +134,16 @@ export default function Services() {
                     </motion.div>
 
                     {/* Service Content - Right for English, Left for Arabic */}
-                    <motion.div
-                        initial={{ opacity: 0, x: isArabic ? -50 : 50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8 }}
-                        viewport={{ once: true }}
-                        className={`${isArabic ? 'lg:order-1 text-right' : 'lg:order-2 text-left'}`}
-                        dir={isArabic ? 'rtl' : 'ltr'}
-                    >
-                        <Link href={selectedService.link} className="block cursor-pointer group">
+                    <div ref={serviceContentRef}>
+                        <motion.div
+                            initial={{ opacity: 0, x: isArabic ? -50 : 50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8 }}
+                            viewport={{ once: true }}
+                            className={`${isArabic ? 'lg:order-1 text-right' : 'lg:order-2 text-left'}`}
+                            dir={isArabic ? 'rtl' : 'ltr'}
+                        >
+                            <Link href={selectedService.link} className="block cursor-pointer group">
                             {/* Title */}
                             <h1 className={`text-4xl md:text-5xl lg:text-5xl xl:text-7xl font-black mb-10 md:mb-12 ${
                                 isArabic ? 'font-tajawal' : 'font-sf-pro'
@@ -212,7 +231,8 @@ export default function Services() {
                                 </motion.div>
                             </AnimatePresence>
                         </Link>
-                    </motion.div>
+                        </motion.div>
+                    </div>
                 </div>
             </div>
         </section>
