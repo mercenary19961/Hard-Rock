@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useTheme } from '@/contexts/ThemeContext';
 
 interface FormData {
     personalName: string;
@@ -13,6 +14,7 @@ interface FormData {
 
 export default function ContactUs() {
     const { t, i18n } = useTranslation('contactUs');
+    const { theme } = useTheme();
     const isArabic = i18n.language === 'ar';
 
     const [formData, setFormData] = useState<FormData>({
@@ -258,7 +260,7 @@ export default function ContactUs() {
                                             ? '2px solid #c93727'
                                             : (focusedField === 'personalName' || formData.personalName)
                                                 ? '2px solid #704399'
-                                                : '2px solid #ffffff',
+                                                : theme === 'light' ? '2px solid #000000' : '2px solid #ffffff',
                                         outline: 'none',
                                         boxShadow: 'none',
                                     }}
@@ -323,7 +325,7 @@ export default function ContactUs() {
                                             ? '2px solid #c93727'
                                             : (focusedField === 'companyName' || formData.companyName)
                                                 ? '2px solid #704399'
-                                                : '2px solid #ffffff',
+                                                : theme === 'light' ? '2px solid #000000' : '2px solid #ffffff',
                                         outline: 'none',
                                         boxShadow: 'none',
                                     }}
@@ -388,7 +390,7 @@ export default function ContactUs() {
                                             ? '2px solid #c93727'
                                             : (focusedField === 'phoneNumber' || formData.phoneNumber)
                                                 ? '2px solid #704399'
-                                                : '2px solid #ffffff',
+                                                : theme === 'light' ? '2px solid #000000' : '2px solid #ffffff',
                                         outline: 'none',
                                         boxShadow: 'none',
                                     }}
@@ -453,7 +455,7 @@ export default function ContactUs() {
                                             ? '2px solid #c93727'
                                             : (focusedField === 'email' || formData.email)
                                                 ? '2px solid #704399'
-                                                : '2px solid #ffffff',
+                                                : theme === 'light' ? '2px solid #000000' : '2px solid #ffffff',
                                         outline: 'none',
                                         boxShadow: 'none',
                                     }}
