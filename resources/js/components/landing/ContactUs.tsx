@@ -218,7 +218,7 @@ export default function ContactUs() {
                     )}
                 </motion.h1>
 
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 xl:gap-16">
                     {/* Left Column - Form */}
                     <motion.div
                         initial={{ opacity: 0, x: isArabic ? 50 : -50 }}
@@ -535,20 +535,20 @@ export default function ContactUs() {
                     >
                         {/* Services and More Details Container */}
                         <div className={`relative z-10 space-y-5 md:space-y-5 lg:space-y-7 xl:space-y-9${
-                            isArabic ? 'ml-32 lg:ml-40 xl:ml-48' : 'mr-32 lg:mr-40 xl:mr-52'
+                            isArabic ? 'ml-26 lg:ml-24 xl:ml-48' : 'mr-32 lg:mr-24 xl:mr-52'
                         }`}>
                             {/* Services Section */}
                             <div>
                                 <h2
-                                    className={`text-2xl md:text-3xl mb-6 ${
+                                    className={`text-2xl lg:text-2xl xl:text-3xl mb-6 ${
                                         isArabic
                                             ? 'font-tajawal font-normal text-right'
                                             : 'font-sf-pro-expanded font-light text-left'
                                     } text-black dark:text-white`}
                                 >
-                                    {isArabic ? 'الخدمات المهتم بها' : 'Services you are looking for?'}
+                                    {isArabic ? 'الخدمات المهتم بها؟' : 'Services you are looking for?'}
                                 </h2>
-                                <div className="flex flex-wrap gap-0.5 sm:gap-1 lg:gap-2 xl:gap-3">
+                                <div className="flex flex-wrap gap-0.5 sm:gap-1 lg:gap-1 xl:gap-3">
                                     {services.map((service) => {
                                         const isSelected = formData.services.includes(service);
                                         return (
@@ -581,7 +581,7 @@ export default function ContactUs() {
                                             : 'font-sf-pro-expanded font-light text-left'
                                     } text-black dark:text-white`}
                                 >
-                                    {isArabic ? 'ملاحظـــــــــات' : 'More Details:'}
+                                    {isArabic ? 'ملاحظـــــــــات:' : 'More Details:'}
                                 </h2>
                                 <div
                                     className="relative rounded-[3rem] p-[1px] transition-all duration-300"
