@@ -168,7 +168,7 @@ export default function ContactUs() {
         >
             {/* Background Image - Position on far right/left edge, only half visible */}
             <div
-                className="absolute inset-y-0 pointer-events-none overflow-visible"
+                className="hidden lg:block absolute inset-y-0 pointer-events-none overflow-visible"
                 style={{
                     width: '50%',
                     right: isArabic ? 'auto' : '-25%',
