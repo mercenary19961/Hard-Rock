@@ -139,7 +139,7 @@ export default function Services() {
                                     <>
                                         <span className="text-black dark:text-white">We Help You </span>
                                         <span className="bg-gradient-to-r from-brand-purple to-brand-red bg-clip-text text-transparent">With</span>
-                                        <span className="text-black dark:text-white">.</span>
+                                        {/* <span className="text-black dark:text-white">.</span> */}
                                     </>
                                 )}
                             </h1>
