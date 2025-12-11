@@ -1,41 +1,327 @@
 import { Link } from '@inertiajs/react';
+import { useTranslation } from 'react-i18next';
 
 export default function Footer() {
+    const { t, i18n } = useTranslation('footer');
+    const isArabic = i18n.language === 'ar';
+
     return (
-        <footer className="bg-card border-t border-border py-12">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-                    <div className="col-span-1 md:col-span-2">
-                        <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent mb-4 inline-block">
-                            Hard Rock
+        <footer className="bg-white dark:bg-black py-16 md:py-20">
+            <div className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 xl:px-20">
+                {/* Mobile: Logo First (Centered), Then 2 Columns */}
+                {/* Desktop: 3 Equal Columns */}
+                <div className="sm:hidden">
+                    {/* Logo - Full Width Centered */}
+                    <div className="flex flex-col items-center justify-center mb-8">
+                        <Link href="/" className="inline-block mb-4">
+                            <img
+                                src="/images/logo-white.png"
+                                alt="HardRock"
+                                className="h-12 w-auto hidden dark:block"
+                            />
+                            <img
+                                src="/images/logo-black.png"
+                                alt="HardRock"
+                                className="h-12 w-auto block dark:hidden"
+                            />
                         </Link>
-                        <p className="text-muted-foreground max-w-sm">
-                            Empowering businesses with intelligent marketing solutions and cutting-edge AI technology.
-                        </p>
+
+                        {/* Social Media Icons */}
+                        <div className="flex items-center gap-2">
+                            <a
+                                href="https://x.com/hardrock_agency"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:opacity-80 transition-opacity"
+                            >
+                                <img src="/images/social-twitter.png" alt="Twitter" className="w-6 h-6" />
+                            </a>
+                            <a
+                                href="https://www.linkedin.com/company/hardrock-agency/?viewAsMember=true"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:opacity-80 transition-opacity"
+                            >
+                                <img src="/images/social-linkedin.png" alt="LinkedIn" className="w-6 h-6" />
+                            </a>
+                            <a
+                                href="https://www.snapchat.com/add/hardrock_agency"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:opacity-80 transition-opacity"
+                            >
+                                <img src="/images/social-snapchat.png" alt="Snapchat" className="w-6 h-6" />
+                            </a>
+                            <a
+                                href="https://www.instagram.com/hardrock_agency/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:opacity-80 transition-opacity"
+                            >
+                                <img src="/images/social-instagram.png" alt="Instagram" className="w-6 h-6" />
+                            </a>
+                            <a
+                                href="https://web.facebook.com/profile.php?id=61584916708775"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:opacity-80 transition-opacity"
+                            >
+                                <img src="/images/social-facebook.png" alt="Facebook" className="w-6 h-6" />
+                            </a>
+                        </div>
                     </div>
-                    
-                    <div>
-                        <h4 className="font-semibold mb-4">Company</h4>
-                        <ul className="space-y-2 text-sm text-muted-foreground">
-                            <li><a href="#" className="hover:text-primary transition-colors">About Us</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">Careers</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">Blog</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">Contact</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div>
-                        <h4 className="font-semibold mb-4">Legal</h4>
-                        <ul className="space-y-2 text-sm text-muted-foreground">
-                            <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">Terms of Service</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">Cookie Policy</a></li>
-                        </ul>
+
+                    {/* Two Columns: Contact Info & Navigation */}
+                    <div className="grid grid-cols-2 gap-4">
+                        {/* Left: Contact Info */}
+                        <div className={`space-y-3 ${isArabic ? 'order-2' : 'order-1'}`} dir={isArabic ? 'rtl' : 'ltr'}>
+                            {/* Address */}
+                            <div className="flex items-start gap-2">
+                                <div className="flex-shrink-0 w-5 h-5 flex items-center justify-center">
+                                    <img src="/images/icon-location.png" alt="Location" className="w-full h-full" />
+                                </div>
+                                <p className={`text-black dark:text-white text-xs ${
+                                    isArabic ? 'font-tajawal font-bold' : 'font-poppins font-light'
+                                }`}>
+                                    {t('address')}
+                                </p>
+                            </div>
+
+                            {/* Phone */}
+                            <div className="flex items-start gap-2">
+                                <div className="flex-shrink-0 w-5 h-5 flex items-center justify-center">
+                                    <img src="/images/icon-phone.png" alt="Phone" className="w-full h-full" />
+                                </div>
+                                <a
+                                    href={`tel:${t('phone')}`}
+                                    className={`text-black dark:text-white text-xs hover:text-brand-purple transition-colors ${
+                                        isArabic ? 'font-tajawal font-bold' : 'font-poppins font-light'
+                                    }`}
+                                >
+                                    {t('phone')}
+                                </a>
+                            </div>
+
+                            {/* Email */}
+                            <div className="flex items-start gap-2">
+                                <div className="flex-shrink-0 w-5 h-5 flex items-center justify-center">
+                                    <img src="/images/icon-email.png" alt="Email" className="w-full h-full" />
+                                </div>
+                                <a
+                                    href={`mailto:${t('email')}`}
+                                    className={`text-black dark:text-white text-xs hover:text-brand-purple transition-colors ${
+                                        isArabic ? 'font-tajawal font-bold' : 'font-poppins font-light'
+                                    }`}
+                                >
+                                    {t('email')}
+                                </a>
+                            </div>
+                        </div>
+
+                        {/* Right: Navigation Menu */}
+                        <div className={`flex flex-col ${isArabic ? 'order-1 items-end' : 'order-2 items-start'}`} dir={isArabic ? 'rtl' : 'ltr'}>
+                            <nav className="space-y-2">
+                                <a
+                                    href="#why-hardrock"
+                                    className={`group block text-black dark:text-white transition-all duration-300 text-xs relative pb-1 ${
+                                        isArabic ? 'font-tajawal font-bold text-right' : 'font-poppins font-light text-left'
+                                    }`}
+                                >
+                                    {t('menu.whyHardRock')}
+                                    <span className={`absolute bottom-0 w-0 h-[1px] bg-gradient-to-r from-brand-purple to-brand-red group-hover:w-full transition-all duration-500 ${
+                                        isArabic ? 'right-0' : 'left-0'
+                                    }`}></span>
+                                </a>
+                                <a
+                                    href="#services"
+                                    className={`group block text-black dark:text-white transition-all duration-300 text-xs relative pb-1 ${
+                                        isArabic ? 'font-tajawal font-bold text-right' : 'font-poppins font-light text-left'
+                                    }`}
+                                >
+                                    {t('menu.services')}
+                                    <span className={`absolute bottom-0 w-0 h-[1px] bg-gradient-to-r from-brand-purple to-brand-red group-hover:w-full transition-all duration-500 ${
+                                        isArabic ? 'right-0' : 'left-0'
+                                    }`}></span>
+                                </a>
+                                <a
+                                    href="#contact-us"
+                                    className={`group block text-black dark:text-white transition-all duration-300 text-xs relative pb-1 ${
+                                        isArabic ? 'font-tajawal font-bold text-right' : 'font-poppins font-light text-left'
+                                    }`}
+                                >
+                                    {t('menu.contactUs')}
+                                    <span className={`absolute bottom-0 w-0 h-[1px] bg-gradient-to-r from-brand-purple to-brand-red group-hover:w-full transition-all duration-500 ${
+                                        isArabic ? 'right-0' : 'left-0'
+                                    }`}></span>
+                                </a>
+                            </nav>
+                        </div>
                     </div>
                 </div>
-                
-                <div className="mt-12 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-                    &copy; {new Date().getFullYear()} Hard Rock. All rights reserved.
+
+                {/* Desktop: 3 Column Layout */}
+                <div className={`hidden sm:grid grid-cols-3 gap-4 md:gap-6 lg:gap-10 xl:gap-16 ${isArabic ? 'text-right' : 'text-left'}`}>
+                    {/* Left Column - Contact Info */}
+                    <div className={`space-y-3 md:space-y-4 lg:space-y-6 ${isArabic ? 'lg:order-1' : 'lg:order-1'}`} dir={isArabic ? 'rtl' : 'ltr'}>
+                        {/* Address */}
+                        <div className="flex items-start gap-2">
+                            <div className="flex-shrink-0 w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 flex items-center justify-center">
+                                <img src="/images/icon-location.png" alt="Location" className="w-full h-full" />
+                            </div>
+                            <p className={`text-black dark:text-white text-xs md:text-sm lg:text-base ${
+                                isArabic ? 'font-tajawal font-bold' : 'font-poppins font-light'
+                            }`}>
+                                {t('address')}
+                            </p>
+                        </div>
+
+                        {/* Phone */}
+                        <div className="flex items-start gap-2">
+                            <div className="flex-shrink-0 w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 flex items-center justify-center">
+                                <img src="/images/icon-phone.png" alt="Phone" className="w-full h-full" />
+                            </div>
+                            <a
+                                href={`tel:${t('phone')}`}
+                                className={`text-black dark:text-white text-xs md:text-sm lg:text-base hover:text-brand-purple transition-colors ${
+                                    isArabic ? 'font-tajawal font-bold' : 'font-poppins font-light'
+                                }`}
+                            >
+                                {t('phone')}
+                            </a>
+                        </div>
+
+                        {/* Email */}
+                        <div className="flex items-start gap-2">
+                            <div className="flex-shrink-0 w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 flex items-center justify-center">
+                                <img src="/images/icon-email.png" alt="Email" className="w-full h-full" />
+                            </div>
+                            <a
+                                href={`mailto:${t('email')}`}
+                                className={`text-black dark:text-white text-xs md:text-sm lg:text-base hover:text-brand-purple transition-colors ${
+                                    isArabic ? 'font-tajawal font-bold' : 'font-poppins font-light'
+                                }`}
+                            >
+                                {t('email')}
+                            </a>
+                        </div>
+                    </div>
+
+                    {/* Center Column - Logo */}
+                    <div className={`flex flex-col items-center justify-start ${isArabic ? 'lg:order-2' : 'lg:order-2'}`}>
+                        <Link href="/" className="inline-block mb-4 md:mb-6 lg:mb-8">
+                            <img
+                                src="/images/logo-white.png"
+                                alt="HardRock"
+                                className="h-12 md:h-16 lg:h-20 xl:h-24 w-auto hidden dark:block"
+                            />
+                            <img
+                                src="/images/logo-black.png"
+                                alt="HardRock"
+                                className="h-12 md:h-16 lg:h-20 xl:h-24 w-auto block dark:hidden"
+                            />
+                        </Link>
+
+                        {/* Social Media Icons */}
+                        <div className="flex items-center gap-2 md:gap-2.5 lg:gap-3">
+                            <a
+                                href="https://x.com/hardrock_agency"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:opacity-80 transition-opacity"
+                            >
+                                <img src="/images/social-twitter.png" alt="Twitter" className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" />
+                            </a>
+                            <a
+                                href="https://www.linkedin.com/company/hardrock-agency/?viewAsMember=true"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:opacity-80 transition-opacity"
+                            >
+                                <img src="/images/social-linkedin.png" alt="LinkedIn" className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" />
+                            </a>
+                            <a
+                                href="https://www.snapchat.com/add/hardrock_agency"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:opacity-80 transition-opacity"
+                            >
+                                <img src="/images/social-snapchat.png" alt="Snapchat" className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" />
+                            </a>
+                            <a
+                                href="https://www.instagram.com/hardrock_agency/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:opacity-80 transition-opacity"
+                            >
+                                <img src="/images/social-instagram.png" alt="Instagram" className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" />
+                            </a>
+                            <a
+                                href="https://web.facebook.com/profile.php?id=61584916708775"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:opacity-80 transition-opacity"
+                            >
+                                <img src="/images/social-facebook.png" alt="Facebook" className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" />
+                            </a>
+                        </div>
+                    </div>
+
+                    {/* Right Column - Navigation Menu */}
+                    <div className={`flex flex-col ${isArabic ? 'lg:order-3 items-start lg:items-end' : 'lg:order-3 items-start lg:items-end'}`} dir={isArabic ? 'rtl' : 'ltr'}>
+                        <nav className="space-y-2 md:space-y-3 lg:space-y-4">
+                            <a
+                                href="#why-hardrock"
+                                className={`group block text-black dark:text-white transition-all duration-300 text-xs md:text-sm lg:text-base relative pb-1 ${
+                                    isArabic ? 'font-tajawal font-bold text-right' : 'font-poppins font-light text-left'
+                                }`}
+                            >
+                                {t('menu.whyHardRock')}
+                                <span className={`absolute bottom-0 w-0 h-[1px] md:h-[2px] bg-gradient-to-r from-brand-purple to-brand-red group-hover:w-full transition-all duration-500 ${
+                                    isArabic ? 'right-0' : 'left-0'
+                                }`}></span>
+                            </a>
+                            <a
+                                href="#services"
+                                className={`group block text-black dark:text-white transition-all duration-300 text-xs md:text-sm lg:text-base relative pb-1 ${
+                                    isArabic ? 'font-tajawal font-bold text-right' : 'font-poppins font-light text-left'
+                                }`}
+                            >
+                                {t('menu.services')}
+                                <span className={`absolute bottom-0 w-0 h-[1px] md:h-[2px] bg-gradient-to-r from-brand-purple to-brand-red group-hover:w-full transition-all duration-500 ${
+                                    isArabic ? 'right-0' : 'left-0'
+                                }`}></span>
+                            </a>
+                            {/* <a
+                                href="#our-team"
+                                className={`group block text-black dark:text-white transition-all duration-300 text-xs md:text-sm lg:text-base relative pb-1 ${
+                                    isArabic ? 'font-tajawal font-bold' : 'font-poppins font-light'
+                                }`}
+                            >
+                                {t('menu.ourTeam')}
+                                <span className="absolute bottom-0 left-0 w-0 h-[1px] md:h-[2px] bg-gradient-to-r from-brand-purple to-brand-red group-hover:w-full transition-all duration-500"></span>
+                            </a> */}
+                            <a
+                                href="#contact-us"
+                                className={`group block text-black dark:text-white transition-all duration-300 text-xs md:text-sm lg:text-base relative pb-1 ${
+                                    isArabic ? 'font-tajawal font-bold text-right' : 'font-poppins font-light text-left'
+                                }`}
+                            >
+                                {t('menu.contactUs')}
+                                <span className={`absolute bottom-0 w-0 h-[1px] md:h-[2px] bg-gradient-to-r from-brand-purple to-brand-red group-hover:w-full transition-all duration-500 ${
+                                    isArabic ? 'right-0' : 'left-0'
+                                }`}></span>
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+
+                {/* Copyright */}
+                <div className="mt-16 pt-8 border-t border-gray-300 dark:border-gray-800 text-center">
+                    <p className={`text-gray-500 dark:text-gray-400 text-xs md:text-sm ${
+                        isArabic ? 'font-tajawal font-bold' : 'font-poppins font-light'
+                    }`}>
+                        {t('copyright')}
+                    </p>
                 </div>
             </div>
         </footer>

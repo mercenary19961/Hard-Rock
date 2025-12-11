@@ -15,6 +15,10 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                tajawal: ['Tajawal', 'sans-serif'],
+                cairo: ['Cairo', 'sans-serif'],
+                poppins: ['Poppins', 'sans-serif'],
+                'sf-pro': ['SF Pro', 'sans-serif'],
             },
             colors: {
                 border: 'hsl(var(--border))',
@@ -50,11 +54,29 @@ export default {
                     DEFAULT: 'hsl(var(--card))',
                     foreground: 'hsl(var(--card-foreground))',
                 },
+                'brand-purple': '#704399',
+                'brand-red': '#C93727',
             },
             borderRadius: {
                 lg: 'var(--radius)',
                 md: 'calc(var(--radius) - 2px)',
                 sm: 'calc(var(--radius) - 4px)',
+            },
+            keyframes: {
+                float: {
+                    '0%, 100%': { transform: 'translateY(0px)' },
+                    '50%': { transform: 'translateY(-20px)' },
+                },
+            },
+            animation: {
+                float: 'float 6s ease-in-out infinite',
+            },
+            screens: {
+                xs: '475px',
+            },
+            fontSize: {
+                xxs: '0.65rem',
+                tiny: '0.7rem',
             },
         },
     },
