@@ -166,6 +166,25 @@ export default function ContactUs() {
             id="contact-us"
             className="relative py-20 md:py-32 overflow-hidden bg-white dark:bg-black"
         >
+            {/* Background Image - Position on far right/left edge, only half visible */}
+            <div
+                className="absolute inset-y-0 pointer-events-none overflow-visible"
+                style={{
+                    width: '50%',
+                    right: isArabic ? 'auto' : '-25%',
+                    left: isArabic ? '-25%' : 'auto',
+                }}
+            >
+                <div
+                    className="w-full h-full bg-no-repeat bg-contain"
+                    style={{
+                        backgroundImage: 'url(/images/contact-us.png)',
+                        backgroundPosition: 'center center',
+                        opacity: 0.6,
+                    }}
+                />
+            </div>
+
             {/* Background Blurs */}
             <div className="absolute top-20 ltr:left-20 rtl:right-20 w-40 h-40 bg-purple-500/20 dark:bg-purple-500/30 rounded-full blur-3xl" />
             <div className="absolute bottom-40 ltr:right-20 rtl:left-20 w-48 h-48 bg-pink-500/20 dark:bg-pink-500/30 rounded-full blur-3xl" />
@@ -514,18 +533,6 @@ export default function ContactUs() {
                         viewport={{ once: true }}
                         className={`${isArabic ? 'lg:order-1' : 'lg:order-2'} relative`}
                     >
-                        {/* Background Image - Show left half for English, right half for Arabic */}
-                        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                            <div
-                                className="w-full h-full bg-no-repeat"
-                                style={{
-                                    backgroundImage: 'url(/images/contact-us.png)',
-                                    backgroundSize: '200%',
-                                    backgroundPosition: isArabic ? 'left center' : 'right center',
-                                    opacity: 0.6,
-                                }}
-                            />
-                        </div>
                         {/* Services Section */}
                         <div className="mb-12 relative z-10">
                             <h2
