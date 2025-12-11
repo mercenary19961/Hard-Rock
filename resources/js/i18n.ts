@@ -7,10 +7,12 @@ import enCommon from './locales/en/common.json';
 import enHero from './locales/en/hero.json';
 import enWhyHardRock from './locales/en/whyHardRock.json';
 import enServices from './locales/en/services.json';
+import enContactUs from './locales/en/contactUs.json';
 import arCommon from './locales/ar/common.json';
 import arHero from './locales/ar/hero.json';
 import arWhyHardRock from './locales/ar/whyHardRock.json';
 import arServices from './locales/ar/services.json';
+import arContactUs from './locales/ar/contactUs.json';
 
 i18n
   .use(LanguageDetector) // Detect user language
@@ -22,12 +24,14 @@ i18n
         hero: enHero,
         whyHardRock: enWhyHardRock,
         services: enServices,
+        contactUs: enContactUs,
       },
       ar: {
         common: arCommon,
         hero: arHero,
         whyHardRock: arWhyHardRock,
         services: arServices,
+        contactUs: arContactUs,
       },
     },
     fallbackLng: 'en', // Default language

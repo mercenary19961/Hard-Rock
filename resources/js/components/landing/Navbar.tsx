@@ -13,7 +13,7 @@ export default function Navbar() {
     const navLinks = [
         { name: t('nav.whyHardrock'), href: '#why-hardrock' },
         { name: t('nav.services'), href: '#services' },
-        { name: t('nav.ourTeam'), href: '#team' },
+        // { name: t('nav.ourTeam'), href: '#team' },
     ];
 
     return (
@@ -48,9 +48,12 @@ export default function Navbar() {
 
                         {/* Theme & Language Toggles */}
 
-                        <button className="bg-gradient-to-r from-brand-purple to-brand-red text-white px-4 lg:px-6 py-2 lg:py-2.5 rounded-full text-sm lg:text-base font-medium hover:shadow-lg hover:shadow-brand-red/50 transition-all duration-300">
+                        <a
+                            href="#contact-us"
+                            className="bg-gradient-to-r from-brand-purple to-brand-red text-white px-4 lg:px-6 py-2 lg:py-2.5 rounded-full text-sm lg:text-base font-medium hover:shadow-lg hover:shadow-brand-red/50 transition-all duration-300"
+                        >
                             {t('nav.contactUs')}
-                        </button>
+                        </a>
                         <ThemeToggle />
                         <LanguageSwitcher />
                     </div>
@@ -90,9 +93,13 @@ export default function Navbar() {
                             {link.name}
                         </a>
                     ))}
-                    <button className="w-full bg-gradient-to-r from-brand-purple to-brand-red text-white px-4 py-3 rounded-full text-base font-medium hover:shadow-lg hover:shadow-brand-red/50 transition-all mt-2">
+                    <a
+                        href="#contact-us"
+                        className="w-full bg-gradient-to-r from-brand-purple to-brand-red text-white px-4 py-3 rounded-full text-base font-medium hover:shadow-lg hover:shadow-brand-red/50 transition-all mt-2 block text-center"
+                        onClick={() => setIsOpen(false)}
+                    >
                         {t('nav.contactUs')}
-                    </button>
+                    </a>
                 </div>
             </motion.div>
         </nav>

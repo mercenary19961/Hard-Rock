@@ -3,10 +3,11 @@ import Navbar from '@/components/landing/Navbar';
 import Hero from '@/components/landing/Hero';
 import WhyHardRock from '@/components/landing/WhyHardRock';
 import Services from '@/components/landing/Services';
-import Testimonials from '@/components/landing/Testimonials';
-import About from '@/components/landing/About';
-import TechnicalCapabilities from '@/components/landing/TechnicalCapabilities';
-import Contact from '@/components/landing/Contact';
+import ContactUs from '@/components/landing/ContactUs';
+// import Testimonials from '@/components/landing/Testimonials';
+// import About from '@/components/landing/About';
+// import TechnicalCapabilities from '@/components/landing/TechnicalCapabilities';
+// import Contact from '@/components/landing/Contact';
 import Footer from '@/components/landing/Footer';
 import SmoothScroll from '@/components/SmoothScroll';
 
@@ -70,10 +71,11 @@ export default function Landing() {
                         <Hero />
                         <WhyHardRock />
                         <Services />
-                        <Testimonials />
+                        <ContactUs />
+                        {/* <Testimonials />
                         <About />
                         <TechnicalCapabilities />
-                        <Contact />
+                        <Contact /> */}
                     </main>
 
                     <Footer />
