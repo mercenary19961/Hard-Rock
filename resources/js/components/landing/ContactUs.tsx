@@ -488,8 +488,8 @@ export default function ContactUs() {
                                 )}
                             </div>
 
-                            {/* Submit Button */}
-                            <div className="flex justify-center">
+                            {/* Submit Button - Hidden on mobile, shown on large screens */}
+                            <div className="hidden lg:flex justify-center">
                                 <button
                                     type="submit"
                                     disabled={!isFormValid()}
@@ -612,6 +612,33 @@ export default function ContactUs() {
                             </div>
                         </div>
                     </motion.div>
+                </div>
+
+                {/* Submit Button for Mobile - Only shown on small screens */}
+                <div className="lg:hidden flex justify-center mt-12">
+                    <button
+                        type="submit"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            const form = document.querySelector('form');
+                            if (form) {
+                                const submitEvent = new Event('submit', { bubbles: true, cancelable: true });
+                                form.dispatchEvent(submitEvent);
+                            }
+                        }}
+                        disabled={!isFormValid()}
+                        className={`relative w-2/4 py-6 px-8 rounded-full text-2xl transition-all duration-300 ${
+                            isFormValid()
+                                ? 'bg-gradient-to-r from-brand-purple to-brand-red text-white cursor-pointer hover:scale-105 hover:shadow-2xl hover:shadow-brand-purple/50 active:scale-95 animate-pulse-glow'
+                                : 'bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-500 cursor-not-allowed'
+                        } ${
+                            isArabic
+                                ? 'font-tajawal font-extrabold'
+                                : 'font-poppins font-bold'
+                        }`}
+                    >
+                        {isArabic ? 'قــــــــدّم' : 'SUBMIT'}
+                    </button>
                 </div>
             </div>
         </section>
