@@ -557,12 +557,12 @@ export default function ContactUs() {
                                                 onClick={() => handleServiceToggle(service)}
                                                 className={`cursor-pointer transition-all duration-300 px-4 py-2 rounded-full ${
                                                     isArabic
-                                                        ? 'font-tajawal font-extralight'
-                                                        : 'font-poppins font-extralight'
+                                                        ? 'font-tajawal font-normal'
+                                                        : 'font-poppins font-normal'
                                                 } ${
                                                     isSelected
                                                         ? 'text-white bg-gradient-to-r from-brand-purple/70 to-brand-red/70'
-                                                        : 'text-gray-400 hover:text-gray-300'
+                                                        : 'text-black dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300'
                                                 }`}
                                             >
                                                 {service}
