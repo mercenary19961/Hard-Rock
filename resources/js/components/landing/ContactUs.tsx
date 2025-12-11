@@ -225,7 +225,7 @@ export default function ContactUs() {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
-                        className={isArabic ? 'lg:order-2' : 'lg:order-1'}
+                        className={isArabic ? 'lg:order-1' : 'lg:order-1'}
                     >
                         <form onSubmit={handleSubmit} className="space-y-8">
                             {/* Personal Name */}
@@ -531,7 +531,7 @@ export default function ContactUs() {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
-                        className={`${isArabic ? 'lg:order-1' : 'lg:order-2'} relative`}
+                        className={`${isArabic ? 'lg:order-2' : 'lg:order-2'} relative`}
                     >
                         {/* Services Section */}
                         <div className="mb-12 relative z-10">
