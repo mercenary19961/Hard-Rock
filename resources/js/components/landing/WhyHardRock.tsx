@@ -55,7 +55,7 @@ export default function WhyHardRock() {
                             </span>
                         </h2>
 
-                        <div className={`space-y-6 text-gray-700 dark:text-gray-300 ${
+                        <div className={`space-y-6 text-gray-700 dark:text-gray-300 max-w-2xl ${
                             isArabic
                                 ? 'text-lg md:text-xl lg:text-2xl xl:text-3xl leading-relaxed font-tajawal font-normal'
                                 : 'text-lg md:text-xl lg:text-2xl leading-relaxed font-poppins font-normal'
