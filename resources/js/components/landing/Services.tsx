@@ -41,6 +41,22 @@ export default function Services() {
         setSelectedService(services[0]);
     }, [i18n.language]);
 
+    // Mobile order mapping for services (grid only, reverts to natural order on lg+ screens)
+    const getMobileOrder = (serviceId: string): number | undefined => {
+        if (typeof window !== 'undefined' && window.innerWidth >= 1024) {
+            return undefined; // No custom order on large screens
+        }
+        const mobileOrderMap: { [key: string]: number } = {
+            'paid-ads': 1,           // Position 1 (Row 1, Col 1)
+            'social-media': 2,       // Position 2 (Row 1, Col 2)
+            'seo': 3,                // Position 3 (Row 2, Col 1)
+            'branding': 5,           // Position 5 (Row 3, Col 1) - swapped with software-ai
+            'software-ai': 4,        // Position 4 (Row 2, Col 2) - swapped with branding
+            'pr-social-listening': 6, // Position 6 (Row 3, Col 2)
+        };
+        return mobileOrderMap[serviceId];
+    };
+
     // Get responsive margin based on screen width
     const getImageMargin = () => {
         if (typeof window !== 'undefined') {
@@ -140,6 +156,7 @@ export default function Services() {
                                     <button
                                             key={service.id}
                                             onClick={() => handleServiceClick(service)}
+                                            style={{ order: getMobileOrder(service.id) }}
                                             className={`py-3 transition-all duration-300 flex ${
                                                 isArabic
                                                     ? 'justify-end'
