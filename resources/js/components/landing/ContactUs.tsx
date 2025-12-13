@@ -242,7 +242,7 @@ export default function ContactUs() {
                     )}
                 </motion.h1>
 
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 xl:gap-16">
+                <div className="grid lg:grid-cols-[40%_60%] xl:grid-cols-2 gap-12 lg:gap-6 xl:gap-16">
                     {/* Left Column - Form */}
                     <motion.div
                         initial={{ opacity: 0, x: isArabic ? 50 : -50 }}
@@ -558,13 +558,13 @@ export default function ContactUs() {
                         className={`${isArabic ? 'lg:order-2' : 'lg:order-2'} relative`}
                     >
                         {/* Services and More Details Container */}
-                        <div className={`relative z-10 space-y-5 md:space-y-5 lg:space-y-7 xl:space-y-9${
-                            isArabic ? 'ml-26 lg:ml-24 xl:ml-48' : 'mr-32 lg:mr-24 xl:mr-52'
+                        <div className={`relative z-10 space-y-5 md:space-y-5 lg:space-y-7 xl:space-y-9 ${
+                            isArabic ? 'ml-32 lg:ml-40 xl:ml-48' : 'mr-32 lg:mr-40 xl:mr-52'
                         }`}>
                             {/* Services Section */}
                             <div>
                                 <h2
-                                    className={`text-2xl lg:text-2xl xl:text-3xl mb-6 ${
+                                    className={`text-2xl lg:text-xl xl:text-2xl 2xl:text-3xl mb-6 ${
                                         isArabic
                                             ? 'font-tajawal font-normal text-right'
                                             : 'font-sf-pro-expanded font-light text-left'
@@ -572,14 +572,14 @@ export default function ContactUs() {
                                 >
                                     {isArabic ? 'الخدمات المهتم بها؟' : 'Services you are looking for?'}
                                 </h2>
-                                <div className="flex flex-wrap gap-0.5 sm:gap-1 lg:gap-1 xl:gap-3">
+                                <div className="flex flex-wrap gap-0.5 sm:gap-1 lg:gap-1 xl:gap-2 2xl:gap-3">
                                     {services.map((service) => {
                                         const isSelected = data.services.includes(service);
                                         return (
                                             <span
                                                 key={service}
                                                 onClick={() => handleServiceToggle(service)}
-                                                className={`cursor-pointer transition-all duration-300 px-4 py-2 rounded-full ${
+                                                className={`cursor-pointer transition-all duration-300 px-3 py-1.5 lg:px-3 lg:py-2 xl:px-4 xl:py-2 rounded-full text-sm lg:text-sm xl:text-base ${
                                                     isArabic
                                                         ? 'font-tajawal font-normal'
                                                         : 'font-poppins font-normal'
@@ -599,7 +599,7 @@ export default function ContactUs() {
                             {/* More Details Section */}
                             <div>
                                 <h2
-                                    className={`text-2xl md:text-3xl mb-6 ${
+                                    className={`text-2xl lg:text-xl xl:text-2xl 2xl:text-3xl mb-6 ${
                                         isArabic
                                             ? 'font-tajawal font-normal text-right'
                                             : 'font-sf-pro-expanded font-light text-left'
