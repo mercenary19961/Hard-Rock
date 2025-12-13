@@ -76,9 +76,9 @@ export default function Footer() {
                         {/* Left: Contact Info */}
                         <div className={`space-y-3 ${isArabic ? 'order-2' : 'order-1'}`} dir={isArabic ? 'rtl' : 'ltr'}>
                             {/* Address */}
-                            <div className="flex items-start gap-2">
+                            <div className="flex items-center gap-2">
                                 <div className="flex-shrink-0 w-5 h-5 flex items-center justify-center">
-                                    <img src="/images/icon-location.png" alt="Location" className="w-full h-full" />
+                                    <img src="/images/icon-location.png" alt="Location" className="w-full h-full object-contain" />
                                 </div>
                                 <p className={`text-black dark:text-white text-xs ${
                                     isArabic ? 'font-tajawal font-bold' : 'font-poppins font-light'
@@ -88,12 +88,13 @@ export default function Footer() {
                             </div>
 
                             {/* Phone */}
-                            <div className="flex items-start gap-2">
+                            <div className="flex items-center gap-2">
                                 <div className="flex-shrink-0 w-5 h-5 flex items-center justify-center">
-                                    <img src="/images/icon-phone.png" alt="Phone" className="w-full h-full" />
+                                    <img src="/images/icon-phone.png" alt="Phone" className="w-full h-full object-contain" />
                                 </div>
                                 <a
                                     href={`tel:${t('phone')}`}
+                                    dir="ltr"
                                     className={`text-black dark:text-white text-xs hover:text-brand-purple transition-colors ${
                                         isArabic ? 'font-tajawal font-bold' : 'font-poppins font-light'
                                     }`}
@@ -103,9 +104,9 @@ export default function Footer() {
                             </div>
 
                             {/* Email */}
-                            <div className="flex items-start gap-2">
+                            <div className="flex items-center gap-2">
                                 <div className="flex-shrink-0 w-5 h-5 flex items-center justify-center">
-                                    <img src="/images/icon-email.png" alt="Email" className="w-full h-full" />
+                                    <img src="/images/icon-email.png" alt="Email" className="w-full h-full object-contain" />
                                 </div>
                                 <a
                                     href={`mailto:${t('email')}`}
@@ -164,9 +165,9 @@ export default function Footer() {
                     {/* Left Column - Contact Info */}
                     <div className={`space-y-3 md:space-y-4 lg:space-y-6 ${isArabic ? 'lg:order-1' : 'lg:order-1'}`} dir={isArabic ? 'rtl' : 'ltr'}>
                         {/* Address */}
-                        <div className="flex items-start gap-2">
+                        <div className="flex items-center gap-2">
                             <div className="flex-shrink-0 w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 flex items-center justify-center">
-                                <img src="/images/icon-location.png" alt="Location" className="w-full h-full" />
+                                <img src="/images/icon-location.png" alt="Location" className="w-full h-full object-contain" />
                             </div>
                             <p className={`text-black dark:text-white text-xs md:text-sm lg:text-base ${
                                 isArabic ? 'font-tajawal font-bold' : 'font-poppins font-light'
@@ -176,12 +177,13 @@ export default function Footer() {
                         </div>
 
                         {/* Phone */}
-                        <div className="flex items-start gap-2">
+                        <div className="flex items-center gap-2">
                             <div className="flex-shrink-0 w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 flex items-center justify-center">
-                                <img src="/images/icon-phone.png" alt="Phone" className="w-full h-full" />
+                                <img src="/images/icon-phone.png" alt="Phone" className="w-full h-full object-contain" />
                             </div>
                             <a
                                 href={`tel:${t('phone')}`}
+                                dir="ltr"
                                 className={`text-black dark:text-white text-xs md:text-sm lg:text-base hover:text-brand-purple transition-colors ${
                                     isArabic ? 'font-tajawal font-bold' : 'font-poppins font-light'
                                 }`}
@@ -191,9 +193,9 @@ export default function Footer() {
                         </div>
 
                         {/* Email */}
-                        <div className="flex items-start gap-2">
+                        <div className="flex items-center gap-2">
                             <div className="flex-shrink-0 w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 flex items-center justify-center">
-                                <img src="/images/icon-email.png" alt="Email" className="w-full h-full" />
+                                <img src="/images/icon-email.png" alt="Email" className="w-full h-full object-contain" />
                             </div>
                             <a
                                 href={`mailto:${t('email')}`}
