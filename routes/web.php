@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -8,8 +9,8 @@ Route::get('/', function () {
     return Inertia::render('Landing');
 })->name('home');
 
-// TODO: Add contact form submission route
-// Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+// Contact Form Submission
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 // Admin Dashboard (Simple authentication for you only)
 // TODO: Implement simple admin dashboard

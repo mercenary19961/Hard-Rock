@@ -102,7 +102,7 @@ export default function Services() {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
-                        className={`grid grid-cols-2 gap-4 mb-12 lg:mb-0 lg:flex lg:flex-col lg:space-y-6 lg:flex-1 items-start ${isArabic ? 'lg:pr-0' : 'lg:pl-40'}`}
+                        className={`grid grid-cols-2 gap-4 mb-12 lg:mb-0 lg:flex lg:flex-col lg:space-y-6 lg:flex-1 items-start ${isArabic ? 'lg:pr-0' : 'md:pl-12 lg:pl-16 xl:pl-24 2xl:pl-40'}`}
                         dir={isArabic ? 'rtl' : 'ltr'}
                     >
                         {services.map((service) => {
@@ -133,7 +133,7 @@ export default function Services() {
                     </motion.div>
 
                     {/* Service Content */}
-                    <div ref={serviceContentRef} className="lg:flex-1">
+                    <div ref={serviceContentRef} className="lg:flex-1 md:pl-48">
                         <motion.div
                             initial={{ opacity: 0, x: isArabic ? -50 : -50 }}
                             whileInView={{ opacity: 1, x: 0 }}
