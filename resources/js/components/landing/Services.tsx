@@ -19,12 +19,12 @@ export default function Services() {
     const [selectedService, setSelectedService] = useState(services[0]);
     const serviceContentRef = useRef<HTMLDivElement>(null);
 
-    // Handle service selection with scroll on small screens
+    // Handle service selection with scroll on mobile screens only
     const handleServiceClick = (service: typeof services[0]) => {
         setSelectedService(service);
 
-        // Scroll to content on small screens (< 1024px)
-        if (typeof window !== 'undefined' && window.innerWidth < 1024) {
+        // Scroll to content on mobile screens only (< 768px)
+        if (typeof window !== 'undefined' && window.innerWidth < 768) {
             setTimeout(() => {
                 if (serviceContentRef.current) {
                     serviceContentRef.current.scrollIntoView({
@@ -125,7 +125,7 @@ export default function Services() {
 
                     {/* Services List */}
                     <motion.div
-                        initial={{ opacity: 0, x: isArabic ? 50 : 50 }}
+                        initial={{ opacity: 0, x: isArabic ? 30 : 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
@@ -140,15 +140,15 @@ export default function Services() {
                                     <button
                                             key={service.id}
                                             onClick={() => handleServiceClick(service)}
-                                            className={`py-4 transition-all duration-300 flex ${
+                                            className={`py-3 transition-all duration-300 flex ${
                                                 isArabic
                                                     ? 'justify-end'
                                                     : 'justify-start'
                                             } ${
-                                                !isSelected && 'hover:bg-gray-100 dark:hover:bg-white/5 px-6 rounded-full'
+                                                !isSelected && 'hover:bg-gray-100 dark:hover:bg-white/5 px-4 rounded-full'
                                             }`}
                                         >
-                                            <span className={`px-8 py-0 rounded-full transition-all duration-300 ${
+                                            <span className={`px-3 md:px-6 py-0 rounded-full transition-all duration-300 whitespace-nowrap ${
                                                 isSelected
                                                     ? 'bg-gradient-to-r from-brand-purple to-brand-red shadow-lg shadow-brand-purple/30'
                                                     : 'bg-transparent'
@@ -160,7 +160,7 @@ export default function Services() {
                                                     : isSelected
                                                         ? 'font-poppins font-light text-white'
                                                         : 'font-poppins font-extralight text-black dark:text-white'
-                                            } text-lg md:text-xl lg:text-2xl xl:text-3xl`}>
+                                            } text-base md:text-lg lg:text-xl xl:text-2xl`}>
                                                 {service.name}
                                             </span>
                                         </button>
@@ -172,7 +172,7 @@ export default function Services() {
                     {/* Service Content */}
                     <div ref={serviceContentRef} className={`w-full flex justify-center lg:justify-start ${isArabic ? 'lg:order-2' : 'lg:order-2'}`}>
                         <motion.div
-                            initial={{ opacity: 0, x: isArabic ? -50 : -50 }}
+                            initial={{ opacity: 0, x: isArabic ? -30 : -30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
                             viewport={{ once: true }}
