@@ -47,17 +47,16 @@ export default function Services() {
             return undefined; // No custom order on large screens
         }
         const mobileOrderMap: { [key: string]: number } = {
-            'paid-ads': 1,           // Position 1 (Row 1, Col 1)
-            'social-media': 2,       // Position 2 (Row 1, Col 2)
-            'seo': 3,                // Position 3 (Row 2, Col 1)
-            'branding': 5,           // Position 5 (Row 3, Col 1) - swapped with software-ai
-            'software-ai': 4,        // Position 4 (Row 2, Col 2) - swapped with branding
-            'pr-social-listening': 6, // Position 6 (Row 3, Col 2)
+            'paid-ads': 1,
+            'social-media': 2,
+            'seo': 3,
+            'branding': 5,
+            'software-ai': 4,
+            'pr-social-listening': 6,
         };
         return mobileOrderMap[serviceId];
     };
 
-    // Get responsive margin based on screen width
     const getImageMargin = () => {
         if (typeof window !== 'undefined') {
             const width = window.innerWidth;
