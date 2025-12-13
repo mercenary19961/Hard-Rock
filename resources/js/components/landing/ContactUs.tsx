@@ -623,6 +623,7 @@ export default function ContactUs() {
                                             onFocus={() => setFocusedField('moreDetails')}
                                             onBlur={() => setFocusedField(null)}
                                             rows={6}
+                                            placeholder={isArabic ? 'أخبرنا بالمزيد عن مشروعك...' : 'Tell us more about your project...'}
                                             className={`w-full bg-transparent outline-none resize-none border-0 ${
                                                 isArabic
                                                     ? 'font-tajawal font-light text-right'
