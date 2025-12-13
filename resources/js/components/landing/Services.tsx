@@ -144,7 +144,7 @@ export default function Services() {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
-                        className={`w-full flex justify-center lg:justify-start mb-12 lg:mb-0 ${isArabic ? 'lg:order-1' : 'lg:order-1'}`}
+                        className={`w-full flex justify-center lg:justify-start mb-12 lg:mb-0 ${isArabic ? 'lg:order-2' : 'lg:order-1'}`}
                         dir={isArabic ? 'rtl' : 'ltr'}
                     >
                         <div className="grid grid-cols-2 gap-4 pl-0 xl:pl-20 lg:flex lg:flex-col lg:space-y-6 lg:flex-1 max-w-2xl lg:max-w-none">
@@ -156,11 +156,7 @@ export default function Services() {
                                             key={service.id}
                                             onClick={() => handleServiceClick(service)}
                                             style={{ order: getMobileOrder(service.id) }}
-                                            className={`py-3 transition-all duration-300 flex ${
-                                                isArabic
-                                                    ? 'justify-end'
-                                                    : 'justify-start'
-                                            } ${
+                                            className={`py-3 transition-all duration-300 flex justify-start ${
                                                 !isSelected && 'hover:bg-gray-100 dark:hover:bg-white/5 px-4 rounded-full'
                                             }`}
                                         >
@@ -186,7 +182,7 @@ export default function Services() {
                     </motion.div>
 
                     {/* Service Content */}
-                    <div ref={serviceContentRef} className={`w-full flex justify-center lg:justify-start ${isArabic ? 'lg:order-2' : 'lg:order-2'}`}>
+                    <div ref={serviceContentRef} className={`w-full flex justify-center lg:justify-start ${isArabic ? 'lg:order-1' : 'lg:order-2'}`}>
                         <motion.div
                             initial={{ opacity: 0, x: isArabic ? -30 : -30 }}
                             whileInView={{ opacity: 1, x: 0 }}
