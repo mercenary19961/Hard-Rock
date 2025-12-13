@@ -5,6 +5,17 @@ export default function Hero() {
     const { t, i18n } = useTranslation('hero');
     const isArabic = i18n.language === 'ar';
 
+    // Scroll to contact section
+    const scrollToContact = () => {
+        const contactSection = document.getElementById('contact-us');
+        if (contactSection) {
+            contactSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    };
+
     return (
         <section className="relative min-h-screen flex items-center overflow-hidden bg-white dark:bg-black">
             {/* Purple Glow Background - Dark Mode */}
@@ -39,7 +50,7 @@ export default function Hero() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, delay: 0.2 }}
-                                className="text-2xl xs:text-2xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-7xl font-bold text-black dark:text-white text-center mb-6 font-tajawal"
+                                className="text-2xl xs:text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-black dark:text-white text-center mb-6 font-tajawal"
                                 style={{ lineHeight: '1.5' }}
                             >
                                 {t('title.line1')}<br />
@@ -54,7 +65,7 @@ export default function Hero() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.8, delay: 0.2 }}
-                                    className="text-2xl xs:text-2xl sm:text-4xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-black dark:text-white text-center mb-2 font-sf-pro"
+                                    className="text-2xl xs:text-3xl sm:text-4xl md:text-4xl lg:text-4xl xl:text-4xl font-bold text-black dark:text-white text-center mb-2 font-sf-pro"
                                     style={{ lineHeight: '1.5' }}
                                 >
                                     {t('title.line1')}<br />
@@ -65,7 +76,7 @@ export default function Hero() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.8, delay: 0.3 }}
-                                    className="text-4xl md:text-5xl lg:text-5xl xl:text-7xl font-bold text-center mb-4 font-sf-pro"
+                                    className="text-4xl xs:text-5xl sm:text-6xl md:text-6xl lg:text-6xl xl:text-7xl font-bold text-center mb-4 font-sf-pro"
                                     style={{ lineHeight: '1.5' }}
                                 >
                                     <span className="bg-gradient-to-r from-brand-purple to-brand-red bg-clip-text text-transparent">
@@ -93,7 +104,7 @@ export default function Hero() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.6 }}
                         >
-                            <button className={`group relative bg-white dark:bg-white border-2 border-brand-purple dark:border-brand-purple px-10 py-4 sm:px-16 md:px-24 rounded-full text-xl md:text-2xl font-light hover:shadow-2xl hover:shadow-brand-red/20 transition-all duration-300 hover:scale-105 tracking-wide hover:border-transparent dark:hover:border-transparent overflow-hidden ${
+                            <button onClick={scrollToContact} className={`group relative bg-white dark:bg-white border-2 border-brand-purple dark:border-brand-purple px-10 py-4 sm:px-16 md:px-24 rounded-full text-xl md:text-2xl font-light hover:shadow-2xl hover:shadow-brand-red/20 transition-all duration-300 hover:scale-105 tracking-wide hover:border-transparent dark:hover:border-transparent overflow-hidden ${
                                 isArabic ? 'font-cairo' : 'font-sf-pro'
                             }`}>
                                 <div className="absolute inset-0 bg-gradient-to-r from-brand-purple to-brand-red opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />

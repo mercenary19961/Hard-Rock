@@ -1,7 +1,8 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/contexts/ThemeContext';
+import { useForm } from '@inertiajs/react';
 
 interface FormData {
     personalName: string;
@@ -17,7 +18,7 @@ export default function ContactUs() {
     const { theme } = useTheme();
     const isArabic = i18n.language === 'ar';
 
-    const [formData, setFormData] = useState<FormData>({
+    const { data, setData, post, processing, errors: inertiaErrors, reset, clearErrors } = useForm<FormData>({
         personalName: '',
         companyName: '',
         phoneNumber: '',
@@ -28,6 +29,10 @@ export default function ContactUs() {
 
     const [focusedField, setFocusedField] = useState<string | null>(null);
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
+    const [showNotification, setShowNotification] = useState(false);
+
+    // Merge Inertia errors with local errors
+    const allErrors = { ...errors, ...inertiaErrors };
 
     // Validation functions
     const validatePersonalName = (name: string): string => {
@@ -137,29 +142,51 @@ export default function ContactUs() {
     const services = isArabic ? availableServicesAr : availableServices;
 
     const handleServiceToggle = (service: string) => {
-        setFormData((prev) => {
-            const isSelected = prev.services.includes(service);
-            const newServices = isSelected
-                ? prev.services.filter((s) => s !== service)
-                : [service, ...prev.services];
-            return { ...prev, services: newServices };
-        });
+        const isSelected = data.services.includes(service);
+        const newServices = isSelected
+            ? data.services.filter((s: string) => s !== service)
+            : [service, ...data.services];
+        setData('services', newServices);
     };
 
     const isFormValid = () => {
-        return (
-            formData.personalName.trim() !== '' &&
-            formData.phoneNumber.trim() !== '' &&
-            formData.email.trim() !== '' &&
-            formData.services.length > 0
-        );
+        // Check if required fields are filled
+        if (!data.personalName.trim() || !data.phoneNumber.trim() || !data.email.trim()) {
+            return false;
+        }
+
+        // Check if there are any validation errors (both local and server-side)
+        if (allErrors.personalName || allErrors.companyName || allErrors.phoneNumber || allErrors.email) {
+            return false;
+        }
+
+        // Validate fields that haven't been validated yet
+        const nameError = validatePersonalName(data.personalName);
+        const phoneError = validatePhoneNumber(data.phoneNumber);
+        const emailError = validateEmail(data.email);
+        const companyError = data.companyName ? validateCompanyName(data.companyName) : '';
+
+        return !nameError && !phoneError && !emailError && !companyError;
     };
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (isFormValid()) {
-            console.log('Form submitted:', formData);
-            // Handle form submission
+            post(route('contact.store'), {
+                preserveScroll: true,
+                preserveState: true,
+                onSuccess: () => {
+                    reset();
+                    setErrors({});
+                    clearErrors();
+                    setFocusedField(null);
+                    setShowNotification(true);
+                    setTimeout(() => setShowNotification(false), 5000);
+                },
+                onError: (errors) => {
+                    console.error('Form submission errors:', errors);
+                }
+            });
         }
     };
 
@@ -192,7 +219,7 @@ export default function ContactUs() {
             <div className="absolute bottom-40 ltr:right-20 rtl:left-20 w-48 h-48 bg-pink-500/20 dark:bg-pink-500/30 rounded-full blur-3xl" />
             <div className="absolute top-1/2 ltr:right-1/3 rtl:left-1/3 w-32 h-32 bg-red-500/15 dark:bg-red-500/25 rounded-full blur-3xl" />
 
-            <div className="relative z-10 w-full px-8 sm:px-12 lg:px-16 xl:px-20">
+            <div className="relative z-10 w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20">
                 {/* Title */}
                 <motion.h1
                     initial={{ opacity: 0, y: 20 }}
@@ -220,7 +247,7 @@ export default function ContactUs() {
                     )}
                 </motion.h1>
 
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 xl:gap-16">
+                <div className="grid lg:grid-cols-[40%_60%] xl:grid-cols-2 gap-12 lg:gap-6 xl:gap-16">
                     {/* Left Column - Form */}
                     <motion.div
                         initial={{ opacity: 0, x: isArabic ? 50 : -50 }}
@@ -234,17 +261,17 @@ export default function ContactUs() {
                             <div className="relative">
                                 <input
                                     type="text"
-                                    value={formData.personalName}
+                                    value={data.personalName}
                                     onChange={(e) => {
-                                        setFormData({ ...formData, personalName: e.target.value });
-                                        if (errors.personalName) {
+                                        setData('personalName', e.target.value);
+                                        if (allErrors.personalName) {
                                             validateField('personalName', e.target.value);
                                         }
                                     }}
                                     onFocus={() => setFocusedField('personalName')}
                                     onBlur={() => {
-                                        validateField('personalName', formData.personalName);
-                                        if (!formData.personalName) setFocusedField(null);
+                                        validateField('personalName', data.personalName);
+                                        if (!data.personalName) setFocusedField(null);
                                     }}
                                     className={`w-full bg-transparent py-4 px-0 outline-none transition-all duration-300 ${
                                         isArabic
@@ -256,9 +283,9 @@ export default function ContactUs() {
                                         borderTop: 'none',
                                         borderLeft: 'none',
                                         borderRight: 'none',
-                                        borderBottom: errors.personalName
+                                        borderBottom: allErrors.personalName
                                             ? '2px solid #c93727'
-                                            : (focusedField === 'personalName' || formData.personalName)
+                                            : (focusedField === 'personalName' || data.personalName)
                                                 ? '2px solid #704399'
                                                 : theme === 'light' ? '2px solid #000000' : '2px solid #ffffff',
                                         outline: 'none',
@@ -267,7 +294,7 @@ export default function ContactUs() {
                                 />
                                 <label
                                     className={`absolute transition-all duration-300 pointer-events-none ${
-                                        focusedField === 'personalName' || formData.personalName
+                                        focusedField === 'personalName' || data.personalName
                                             ? isArabic
                                                 ? '-top-5 right-0 text-sm'
                                                 : '-top-5 left-0 text-sm'
@@ -279,18 +306,18 @@ export default function ContactUs() {
                                             ? 'font-tajawal font-normal text-right'
                                             : 'font-sf-pro-expanded font-thin text-left'
                                     } ${
-                                        focusedField === 'personalName' || formData.personalName
+                                        focusedField === 'personalName' || data.personalName
                                             ? 'text-black dark:text-white'
                                             : 'text-gray-500 dark:text-gray-400'
                                     } text-lg`}
                                 >
                                     {isArabic ? 'الاســــــــــــم :' : 'PERSONAL NAME :'}
                                 </label>
-                                {errors.personalName && (
+                                {allErrors.personalName && (
                                     <p className={`mt-1 text-sm text-brand-red ${
                                         isArabic ? 'text-right font-tajawal' : 'text-left font-poppins'
                                     }`}>
-                                        {errors.personalName}
+                                        {allErrors.personalName}
                                     </p>
                                 )}
                             </div>
@@ -299,17 +326,17 @@ export default function ContactUs() {
                             <div className="relative">
                                 <input
                                     type="text"
-                                    value={formData.companyName}
+                                    value={data.companyName}
                                     onChange={(e) => {
-                                        setFormData({ ...formData, companyName: e.target.value });
-                                        if (errors.companyName) {
+                                        setData('companyName', e.target.value);
+                                        if (allErrors.companyName) {
                                             validateField('companyName', e.target.value);
                                         }
                                     }}
                                     onFocus={() => setFocusedField('companyName')}
                                     onBlur={() => {
-                                        validateField('companyName', formData.companyName);
-                                        if (!formData.companyName) setFocusedField(null);
+                                        validateField('companyName', data.companyName);
+                                        if (!data.companyName) setFocusedField(null);
                                     }}
                                     className={`w-full bg-transparent py-4 px-0 outline-none transition-all duration-300 ${
                                         isArabic
@@ -321,9 +348,9 @@ export default function ContactUs() {
                                         borderTop: 'none',
                                         borderLeft: 'none',
                                         borderRight: 'none',
-                                        borderBottom: errors.companyName
+                                        borderBottom: allErrors.companyName
                                             ? '2px solid #c93727'
-                                            : (focusedField === 'companyName' || formData.companyName)
+                                            : (focusedField === 'companyName' || data.companyName)
                                                 ? '2px solid #704399'
                                                 : theme === 'light' ? '2px solid #000000' : '2px solid #ffffff',
                                         outline: 'none',
@@ -332,7 +359,7 @@ export default function ContactUs() {
                                 />
                                 <label
                                     className={`absolute transition-all duration-300 pointer-events-none ${
-                                        focusedField === 'companyName' || formData.companyName
+                                        focusedField === 'companyName' || data.companyName
                                             ? isArabic
                                                 ? '-top-5 right-0 text-sm'
                                                 : '-top-5 left-0 text-sm'
@@ -344,18 +371,18 @@ export default function ContactUs() {
                                             ? 'font-tajawal font-normal text-right'
                                             : 'font-sf-pro-expanded font-thin text-left'
                                     } ${
-                                        focusedField === 'companyName' || formData.companyName
+                                        focusedField === 'companyName' || data.companyName
                                             ? 'text-black dark:text-white'
                                             : 'text-gray-500 dark:text-gray-400'
                                     } text-lg`}
                                 >
                                     {isArabic ? 'اســـــــــم الشــــركـــة :' : 'COMPANY NAME :'}
                                 </label>
-                                {errors.companyName && (
+                                {allErrors.companyName && (
                                     <p className={`mt-1 text-sm text-brand-red ${
                                         isArabic ? 'text-right font-tajawal' : 'text-left font-poppins'
                                     }`}>
-                                        {errors.companyName}
+                                        {allErrors.companyName}
                                     </p>
                                 )}
                             </div>
@@ -364,17 +391,17 @@ export default function ContactUs() {
                             <div className="relative">
                                 <input
                                     type="tel"
-                                    value={formData.phoneNumber}
+                                    value={data.phoneNumber}
                                     onChange={(e) => {
-                                        setFormData({ ...formData, phoneNumber: e.target.value });
-                                        if (errors.phoneNumber) {
+                                        setData('phoneNumber', e.target.value);
+                                        if (allErrors.phoneNumber) {
                                             validateField('phoneNumber', e.target.value);
                                         }
                                     }}
                                     onFocus={() => setFocusedField('phoneNumber')}
                                     onBlur={() => {
-                                        validateField('phoneNumber', formData.phoneNumber);
-                                        if (!formData.phoneNumber) setFocusedField(null);
+                                        validateField('phoneNumber', data.phoneNumber);
+                                        if (!data.phoneNumber) setFocusedField(null);
                                     }}
                                     className={`w-full bg-transparent py-4 px-0 outline-none transition-all duration-300 ${
                                         isArabic
@@ -386,9 +413,9 @@ export default function ContactUs() {
                                         borderTop: 'none',
                                         borderLeft: 'none',
                                         borderRight: 'none',
-                                        borderBottom: errors.phoneNumber
+                                        borderBottom: allErrors.phoneNumber
                                             ? '2px solid #c93727'
-                                            : (focusedField === 'phoneNumber' || formData.phoneNumber)
+                                            : (focusedField === 'phoneNumber' || data.phoneNumber)
                                                 ? '2px solid #704399'
                                                 : theme === 'light' ? '2px solid #000000' : '2px solid #ffffff',
                                         outline: 'none',
@@ -397,7 +424,7 @@ export default function ContactUs() {
                                 />
                                 <label
                                     className={`absolute transition-all duration-300 pointer-events-none ${
-                                        focusedField === 'phoneNumber' || formData.phoneNumber
+                                        focusedField === 'phoneNumber' || data.phoneNumber
                                             ? isArabic
                                                 ? '-top-5 right-0 text-sm'
                                                 : '-top-5 left-0 text-sm'
@@ -409,18 +436,18 @@ export default function ContactUs() {
                                             ? 'font-tajawal font-normal text-right'
                                             : 'font-sf-pro-expanded font-thin text-left'
                                     } ${
-                                        focusedField === 'phoneNumber' || formData.phoneNumber
+                                        focusedField === 'phoneNumber' || data.phoneNumber
                                             ? 'text-black dark:text-white'
                                             : 'text-gray-500 dark:text-gray-400'
                                     } text-lg`}
                                 >
                                     {isArabic ? 'رقـــــم الهـــاتــف :' : 'PHONE NUMBER :'}
                                 </label>
-                                {errors.phoneNumber && (
+                                {allErrors.phoneNumber && (
                                     <p className={`mt-1 text-sm text-brand-red ${
                                         isArabic ? 'text-right font-tajawal' : 'text-left font-poppins'
                                     }`}>
-                                        {errors.phoneNumber}
+                                        {allErrors.phoneNumber}
                                     </p>
                                 )}
                             </div>
@@ -429,17 +456,17 @@ export default function ContactUs() {
                             <div className="relative">
                                 <input
                                     type="email"
-                                    value={formData.email}
+                                    value={data.email}
                                     onChange={(e) => {
-                                        setFormData({ ...formData, email: e.target.value });
-                                        if (errors.email) {
+                                        setData('email', e.target.value);
+                                        if (allErrors.email) {
                                             validateField('email', e.target.value);
                                         }
                                     }}
                                     onFocus={() => setFocusedField('email')}
                                     onBlur={() => {
-                                        validateField('email', formData.email);
-                                        if (!formData.email) setFocusedField(null);
+                                        validateField('email', data.email);
+                                        if (!data.email) setFocusedField(null);
                                     }}
                                     className={`w-full bg-transparent py-4 px-0 outline-none transition-all duration-300 ${
                                         isArabic
@@ -451,9 +478,9 @@ export default function ContactUs() {
                                         borderTop: 'none',
                                         borderLeft: 'none',
                                         borderRight: 'none',
-                                        borderBottom: errors.email
+                                        borderBottom: allErrors.email
                                             ? '2px solid #c93727'
-                                            : (focusedField === 'email' || formData.email)
+                                            : (focusedField === 'email' || data.email)
                                                 ? '2px solid #704399'
                                                 : theme === 'light' ? '2px solid #000000' : '2px solid #ffffff',
                                         outline: 'none',
@@ -462,7 +489,7 @@ export default function ContactUs() {
                                 />
                                 <label
                                     className={`absolute transition-all duration-300 pointer-events-none ${
-                                        focusedField === 'email' || formData.email
+                                        focusedField === 'email' || data.email
                                             ? isArabic
                                                 ? '-top-5 right-0 text-sm'
                                                 : '-top-5 left-0 text-sm'
@@ -474,18 +501,18 @@ export default function ContactUs() {
                                             ? 'font-tajawal font-normal text-right'
                                             : 'font-sf-pro-expanded font-thin text-left'
                                     } ${
-                                        focusedField === 'email' || formData.email
+                                        focusedField === 'email' || data.email
                                             ? 'text-black dark:text-white'
                                             : 'text-gray-500 dark:text-gray-400'
                                     } text-lg`}
                                 >
                                     {isArabic ? 'البريد الإلكترونــــــي :' : 'E-MAIL :'}
                                 </label>
-                                {errors.email && (
+                                {allErrors.email && (
                                     <p className={`mt-1 text-sm text-brand-red ${
                                         isArabic ? 'text-right font-tajawal' : 'text-left font-poppins'
                                     }`}>
-                                        {errors.email}
+                                        {allErrors.email}
                                     </p>
                                 )}
                             </div>
@@ -536,13 +563,13 @@ export default function ContactUs() {
                         className={`${isArabic ? 'lg:order-2' : 'lg:order-2'} relative`}
                     >
                         {/* Services and More Details Container */}
-                        <div className={`relative z-10 space-y-5 md:space-y-5 lg:space-y-7 xl:space-y-9${
-                            isArabic ? 'ml-26 lg:ml-24 xl:ml-48' : 'mr-32 lg:mr-24 xl:mr-52'
+                        <div className={`relative z-10 space-y-5 md:space-y-5 lg:space-y-7 xl:space-y-9 ${
+                            isArabic ? 'ml-0 md:ml-32 lg:ml-40 xl:ml-48' : 'mr-0 md:mr-32 lg:mr-40 xl:mr-52'
                         }`}>
                             {/* Services Section */}
                             <div>
                                 <h2
-                                    className={`text-2xl lg:text-2xl xl:text-3xl mb-6 ${
+                                    className={`text-2xl lg:text-xl xl:text-2xl 2xl:text-3xl mb-6 ${
                                         isArabic
                                             ? 'font-tajawal font-normal text-right'
                                             : 'font-sf-pro-expanded font-light text-left'
@@ -550,14 +577,14 @@ export default function ContactUs() {
                                 >
                                     {isArabic ? 'الخدمات المهتم بها؟' : 'Services you are looking for?'}
                                 </h2>
-                                <div className="flex flex-wrap gap-0.5 sm:gap-1 lg:gap-1 xl:gap-3">
+                                <div className="flex flex-wrap gap-0.5 sm:gap-1 lg:gap-1 xl:gap-2 2xl:gap-3">
                                     {services.map((service) => {
-                                        const isSelected = formData.services.includes(service);
+                                        const isSelected = data.services.includes(service);
                                         return (
                                             <span
                                                 key={service}
                                                 onClick={() => handleServiceToggle(service)}
-                                                className={`cursor-pointer transition-all duration-300 px-4 py-2 rounded-full ${
+                                                className={`cursor-pointer transition-all duration-300 px-3 py-1.5 lg:px-3 lg:py-2 xl:px-4 xl:py-2 rounded-full text-sm lg:text-sm xl:text-base ${
                                                     isArabic
                                                         ? 'font-tajawal font-normal'
                                                         : 'font-poppins font-normal'
@@ -577,7 +604,7 @@ export default function ContactUs() {
                             {/* More Details Section */}
                             <div>
                                 <h2
-                                    className={`text-2xl md:text-3xl mb-6 ${
+                                    className={`text-2xl lg:text-xl xl:text-2xl 2xl:text-3xl mb-6 ${
                                         isArabic
                                             ? 'font-tajawal font-normal text-right'
                                             : 'font-sf-pro-expanded font-light text-left'
@@ -587,20 +614,21 @@ export default function ContactUs() {
                                 </h2>
                                 <div
                                     className={`relative rounded-[3rem] p-[1px] transition-all duration-300 ${
-                                        (focusedField === 'moreDetails' || formData.moreDetails)
+                                        (focusedField === 'moreDetails' || data.moreDetails)
                                             ? 'bg-brand-purple'
                                             : 'bg-black dark:bg-white'
                                     }`}
                                 >
                                     <div className="bg-white dark:bg-black rounded-[3rem] p-6">
                                         <textarea
-                                            value={formData.moreDetails}
+                                            value={data.moreDetails}
                                             onChange={(e) =>
-                                                setFormData({ ...formData, moreDetails: e.target.value })
+                                                setData('moreDetails', e.target.value)
                                             }
                                             onFocus={() => setFocusedField('moreDetails')}
                                             onBlur={() => setFocusedField(null)}
                                             rows={6}
+                                            placeholder={isArabic ? 'أخبرنا بالمزيد عن مشروعك...' : 'Tell us more about your project...'}
                                             className={`w-full bg-transparent outline-none resize-none border-0 ${
                                                 isArabic
                                                     ? 'font-tajawal font-light text-right'
@@ -642,6 +670,84 @@ export default function ContactUs() {
                     </button>
                 </div>
             </div>
+
+            {/* Success Notification Toast */}
+            <AnimatePresence>
+                {showNotification && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 20, scale: 0.9 }}
+                        transition={{ duration: 0.4, ease: 'easeOut' }}
+                        className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 max-w-md w-full mx-4"
+                    >
+                        <div className="bg-gradient-to-r from-brand-purple to-brand-red p-1 rounded-2xl shadow-2xl">
+                            <div className="bg-white dark:bg-black rounded-2xl p-6 flex items-center gap-4">
+                                {/* Success Icon */}
+                                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-brand-purple to-brand-red rounded-full flex items-center justify-center">
+                                    <svg
+                                        className="w-6 h-6 text-white"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={3}
+                                            d="M5 13l4 4L19 7"
+                                        />
+                                    </svg>
+                                </div>
+
+                                {/* Message */}
+                                <div className="flex-1">
+                                    <h3 className={`font-bold text-lg mb-1 text-black dark:text-white ${
+                                        isArabic ? 'font-tajawal text-right' : 'font-poppins text-left'
+                                    }`}>
+                                        {isArabic ? 'تم الإرسال بنجاح!' : 'Successfully Submitted!'}
+                                    </h3>
+                                    <p className={`text-sm text-gray-600 dark:text-gray-400 ${
+                                        isArabic ? 'font-tajawal text-right' : 'font-poppins text-left'
+                                    }`}>
+                                        {isArabic
+                                            ? 'سنتواصل معك قريباً'
+                                            : "We'll get back to you soon"}
+                                    </p>
+                                </div>
+
+                                {/* Close Button */}
+                                <button
+                                    onClick={() => setShowNotification(false)}
+                                    className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                                >
+                                    <svg
+                                        className="w-5 h-5 text-gray-500 dark:text-gray-400"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M6 18L18 6M6 6l12 12"
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Progress Bar */}
+                        <motion.div
+                            initial={{ scaleX: 1 }}
+                            animate={{ scaleX: 0 }}
+                            transition={{ duration: 5, ease: 'linear' }}
+                            className="h-1 bg-gradient-to-r from-brand-purple to-brand-red rounded-full mt-2 origin-left"
+                        />
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section>
     );
 }

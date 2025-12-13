@@ -6,7 +6,7 @@ export default function WhyHardRock() {
     const isArabic = i18n.language === 'ar';
 
     return (
-        <section id="why-hardrock" className="relative pt-15 pb-20 md:pt-20 md:pb-64 overflow-hidden bg-white dark:bg-black">
+        <section id="why-hardrock" className="relative pt-15 pb-20 md:pt-20 md:pb-20 lg:pb-64 overflow-hidden bg-white dark:bg-black">
             {/* Background Blurs - Small Circles */}
             <div className="absolute top-10 ltr:right-20 rtl:left-20 w-32 h-32 bg-purple-500/30 dark:bg-purple-500/40 rounded-full blur-3xl" />
             <div className="absolute top-40 ltr:right-60 rtl:left-60 w-24 h-24 bg-pink-500/25 dark:bg-pink-500/35 rounded-full blur-2xl" />
@@ -26,7 +26,7 @@ export default function WhyHardRock() {
                     >
                         <div className="relative w-full max-w-md mx-auto">
                             {/* Gradient Circle Background */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-brand-purple to-brand-red rounded-full blur-2xl opacity-30" />
+                            <div className="hidden lg:block absolute inset-0 bg-gradient-to-br from-brand-purple to-brand-red rounded-full blur-2xl opacity-30" />
 
                             {/* AI Head Image */}
                             <img
