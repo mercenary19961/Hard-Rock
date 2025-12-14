@@ -264,6 +264,7 @@ export default function ContactUs() {
                                     value={data.personalName}
                                     onChange={(e) => {
                                         setData('personalName', e.target.value);
+                                        clearErrors('personalName');
                                         if (allErrors.personalName) {
                                             validateField('personalName', e.target.value);
                                         }
@@ -329,6 +330,7 @@ export default function ContactUs() {
                                     value={data.companyName}
                                     onChange={(e) => {
                                         setData('companyName', e.target.value);
+                                        clearErrors('companyName');
                                         if (allErrors.companyName) {
                                             validateField('companyName', e.target.value);
                                         }
@@ -394,6 +396,7 @@ export default function ContactUs() {
                                     value={data.phoneNumber}
                                     onChange={(e) => {
                                         setData('phoneNumber', e.target.value);
+                                        clearErrors('phoneNumber');
                                         if (allErrors.phoneNumber) {
                                             validateField('phoneNumber', e.target.value);
                                         }
@@ -459,6 +462,7 @@ export default function ContactUs() {
                                     value={data.email}
                                     onChange={(e) => {
                                         setData('email', e.target.value);
+                                        clearErrors('email');
                                         if (allErrors.email) {
                                             validateField('email', e.target.value);
                                         }
