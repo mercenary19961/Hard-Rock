@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -49,10 +49,10 @@ export default function Services() {
         const mobileOrderMap: { [key: string]: number } = {
             'paid-ads': 1,
             'social-media': 2,
-            'seo': 3,
-            'branding': 5,
-            'software-ai': 4,
-            'pr-social-listening': 6,
+            'software-ai': 3,
+            'seo': 4,
+            'pr-social-listening': 5,
+            'branding': 6,
         };
         return mobileOrderMap[serviceId];
     };
@@ -147,7 +147,7 @@ export default function Services() {
                         className={`w-full flex justify-center lg:justify-start mb-12 lg:mb-0 ${isArabic ? 'lg:order-2' : 'lg:order-1'}`}
                         dir={isArabic ? 'rtl' : 'ltr'}
                     >
-                        <div className="grid grid-cols-2 gap-2 md:gap-4 pl-0 xl:pl-20 lg:flex lg:flex-col lg:space-y-6 lg:flex-1 max-w-2xl lg:max-w-none">
+                        <div className="grid grid-cols-2 gap-4 md:gap-4 pl-0 xl:pl-20 lg:flex lg:flex-col lg:space-y-6 lg:flex-1 max-w-2xl lg:max-w-none">
                             {services.map((service) => {
                                 const isSelected = selectedService.id === service.id;
 
@@ -156,11 +156,13 @@ export default function Services() {
                                             key={service.id}
                                             onClick={() => handleServiceClick(service)}
                                             style={{ order: getMobileOrder(service.id) }}
-                                            className={`py-3 transition-all duration-300 flex justify-start ${
-                                                !isSelected && 'hover:bg-gray-100 dark:hover:bg-white/5 px-4 rounded-full'
+                                            className={`py-3 flex justify-start ${
+                                                getMobileOrder(service.id) && getMobileOrder(service.id)! % 2 === 0
+                                                    ? 'pl-4 lg:pl-0'
+                                                    : ''
                                             }`}
                                         >
-                                            <span className={`px-3 md:px-6 py-0 rounded-full transition-all duration-300 whitespace-nowrap ${
+                                            <span className={`px-3 md:px-6 py-0 rounded-full whitespace-nowrap ${
                                                 isSelected
                                                     ? 'bg-gradient-to-r from-brand-purple to-brand-red shadow-lg shadow-brand-purple/30'
                                                     : 'bg-transparent'
@@ -211,74 +213,46 @@ export default function Services() {
                                 )}
                             </h1>
 
-                            {/* Service Image with Animation */}
-                            <AnimatePresence mode="wait">
-                                <motion.div
-                                    key={selectedService.id}
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.9 }}
-                                    transition={{ duration: 0.5 }}
-                                    className="relative w-full max-w-sm mb-8 flex items-center justify-center mx-auto lg:mx-0"
-                                    style={{
-                                        height: '280px',
-                                        marginLeft: window.innerWidth >= 1024 ? imageMargin.left : 'auto',
-                                        marginRight: window.innerWidth >= 1024 ? imageMargin.right : 'auto'
-                                    }}
+                            {/* Service Image */}
+                            <div
+                                className="relative w-full max-w-sm mb-8 flex items-center justify-center mx-auto lg:mx-0"
+                                style={{
+                                    height: '280px',
+                                    marginLeft: window.innerWidth >= 1024 ? imageMargin.left : 'auto',
+                                    marginRight: window.innerWidth >= 1024 ? imageMargin.right : 'auto'
+                                }}
+                            >
+                                {/* Glow effect */}
+                                <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/20 to-brand-red/20 rounded-full blur-2xl" />
+
+                                {/* Light mode image */}
+                                <img
+                                    src={currentImage.light}
+                                    alt={selectedService.name}
+                                    className="relative z-10 w-full h-full object-contain drop-shadow-2xl dark:hidden"
+                                />
+
+                                {/* Dark mode image */}
+                                <img
+                                    src={currentImage.dark}
+                                    alt={selectedService.name}
+                                    className="relative z-10 w-full h-full object-contain drop-shadow-2xl hidden dark:block"
+                                />
+                            </div>
+
+                            {/* Service Description */}
+                            <div style={{ minHeight: '180px' }} className="max-w-lg mx-auto lg:mx-0">
+                                <p
+                                    className={`text-gray-700 dark:text-gray-300 mb-6 ${
+                                        isArabic
+                                            ? 'text-lg md:text-xl lg:text-2xl xl:text-3xl font-tajawal font-normal'
+                                            : 'text-base md:text-lg lg:text-xl xl:text-2xl font-poppins font-normal'
+                                    }`}
+                                    style={{ lineHeight: '1.8' }}
                                 >
-                                    {/* Glow effect */}
-                                    <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/20 to-brand-red/20 rounded-full blur-2xl" />
-
-                                    {/* Light mode image */}
-                                    <img
-                                        src={currentImage.light}
-                                        alt={selectedService.name}
-                                        className="relative z-10 w-full h-full object-contain drop-shadow-2xl dark:hidden transition-transform duration-300 group-hover:scale-105"
-                                    />
-
-                                    {/* Dark mode image */}
-                                    <img
-                                        src={currentImage.dark}
-                                        alt={selectedService.name}
-                                        className="relative z-10 w-full h-full object-contain drop-shadow-2xl hidden dark:block transition-transform duration-300 group-hover:scale-105"
-                                    />
-                                </motion.div>
-                            </AnimatePresence>
-
-                            {/* Service Description with Animation */}
-                            <AnimatePresence mode="wait">
-                                <motion.div
-                                    key={selectedService.id + '-text'}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -20 }}
-                                    transition={{ duration: 0.5 }}
-                                    style={{ minHeight: '180px' }}
-                                    className="max-w-lg mx-auto lg:mx-0"
-                                >
-                                    <p
-                                        className={`text-gray-700 dark:text-gray-300 mb-6 ${
-                                            isArabic
-                                                ? 'text-lg md:text-xl lg:text-2xl xl:text-3xl font-tajawal font-normal'
-                                                : 'text-base md:text-lg lg:text-xl xl:text-2xl font-poppins font-normal'
-                                        }`}
-                                        style={{ lineHeight: '1.8' }}
-                                    >
-                                        {selectedService.description}
-                                    </p>
-
-                                    {/* Learn More button - Hidden until service pages are developed */}
-                                    {/* <span
-                                        className={`inline-block text-brand-purple group-hover:text-brand-red transition-colors duration-300 ${
-                                            isArabic
-                                                ? 'text-lg md:text-xl font-tajawal font-medium'
-                                                : 'text-base md:text-lg font-poppins font-medium'
-                                        }`}
-                                    >
-                                        {t('learnMore')} {isArabic ? '←' : '→'}
-                                    </span> */}
-                                </motion.div>
-                            </AnimatePresence>
+                                    {selectedService.description}
+                                </p>
+                            </div>
                         </div>
                         </motion.div>
                     </div>
