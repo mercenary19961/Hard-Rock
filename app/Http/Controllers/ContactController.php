@@ -44,24 +44,21 @@ class ContactController extends Controller
             throw $e;
         }
 
-        // Send email notification (disabled until email server is configured)
-        // TODO: Re-enable after Resend/SMTP setup
-        // try {
-        //     Mail::send('emails.contact-notification', ['contact' => $contact], function ($message) {
-        //         $message->to('sales@hardrock-co.com')
-        //             ->subject('New Contact Form Submission - HardRock Agency');
-        //     });
-        // } catch (\Exception $e) {
-        //     // Log error but don't fail the request
-        //     Log::error('Failed to send contact email: ' . $e->getMessage());
-        // }
+        // Send email notification
+        try {
+            Mail::send('emails.contact-notification', ['contact' => $contact], function ($message) {
+                $message->to('sales@hardrock-co.com')
+                    ->subject('New Contact Form Submission - HardRock Agency');
+            });
 
-        // Just log the submission for now
-        Log::info('New contact form submission', [
-            'name' => $contact->personal_name,
-            'email' => $contact->email,
-            'company' => $contact->company_name,
-        ]);
+            Log::info('Contact email sent successfully', ['contact_id' => $contact->id]);
+        } catch (\Exception $e) {
+            // Log error but don't fail the request
+            Log::error('Failed to send contact email', [
+                'error' => $e->getMessage(),
+                'contact_id' => $contact->id
+            ]);
+        }
 
         return back()->with('success', 'Thank you for contacting us! We will get back to you soon.');
     }
