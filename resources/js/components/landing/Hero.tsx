@@ -28,7 +28,7 @@ export default function Hero() {
             {/* <div className="absolute inset-0 bg-gradient-to-br from-white via-purple-50/30 to-pink-50/20 dark:hidden" /> */}
 
             {/* Background Wave */}
-            <div className="absolute ltr:bottom-12 ltr:left-0 rtl:bottom-0 rtl:right-0 ltr:origin-bottom-left rtl:origin-bottom-right w-[80%] lg:w-[60%] opacity-15 dark:opacity-40">
+            <div className="hidden lg:block absolute ltr:bottom-12 ltr:left-0 rtl:bottom-0 rtl:right-0 ltr:origin-bottom-left rtl:origin-bottom-right lg:w-[40%] opacity-15 dark:opacity-40">
                 <img
                     src="/images/bg wave.png"
                     alt=""
@@ -36,7 +36,7 @@ export default function Hero() {
                 />
             </div>
 
-            <div className="relative z-10 w-full px-8 sm:px-12 lg:px-16 xl:px-20 pt-24 pb-20">
+            <div className="relative z-10 w-full px-8 sm:px-12 lg:px-16 xl:px-20 pt-20 pb-0 md:pt-24 md:pb-20">
                 <div className="grid lg:grid-cols-2 gap-10 items-center">
                     {/* Left Column - Text Content */}
                     <motion.div
@@ -92,8 +92,8 @@ export default function Hero() {
                             transition={{ duration: 0.8, delay: 0.4 }}
                             className={`text-gray-700 dark:text-gray-300 mx-auto text-center leading-relaxed ${
                                 isArabic
-                                    ? 'text-base md:text-lg lg:text-xl xl:text-2xl mb-12 max-w-md font-tajawal font-extralight'
-                                    : 'text-sm md:text-lg lg:text-1xl xl:text-2xl mb-10 max-w-xl font-sf-pro font-thin'
+                                    ? 'text-base md:text-lg lg:text-xl xl:text-2xl mb-12 max-w-md font-tajawal font-light'
+                                    : 'text-sm md:text-lg lg:text-1xl xl:text-2xl mb-10 max-w-xl font-sf-pro font-light'
                             }`}
                         >
                             {t('subtitle')}
