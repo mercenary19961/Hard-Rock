@@ -103,7 +103,7 @@ export default function Services() {
     const currentImage = getServiceImage(selectedService);
 
     return (
-        <section id="services" className="relative py-20 md:py-32 overflow-hidden bg-white dark:bg-black">
+        <section id="services" className="relative py-10 md:py-32 overflow-hidden bg-white dark:bg-black">
             {/* Background Blurs */}
             <div className="absolute top-20 ltr:left-20 rtl:right-20 w-40 h-40 bg-purple-500/20 dark:bg-purple-500/30 rounded-full blur-3xl" />
             <div className="absolute bottom-40 ltr:right-20 rtl:left-20 w-48 h-48 bg-pink-500/20 dark:bg-pink-500/30 rounded-full blur-3xl" />
@@ -147,7 +147,7 @@ export default function Services() {
                         className={`w-full flex justify-center lg:justify-start mb-12 lg:mb-0 ${isArabic ? 'lg:order-2' : 'lg:order-1'}`}
                         dir={isArabic ? 'rtl' : 'ltr'}
                     >
-                        <div className="grid grid-cols-2 gap-4 pl-0 xl:pl-20 lg:flex lg:flex-col lg:space-y-6 lg:flex-1 max-w-2xl lg:max-w-none">
+                        <div className="grid grid-cols-2 gap-2 md:gap-4 pl-0 xl:pl-20 lg:flex lg:flex-col lg:space-y-6 lg:flex-1 max-w-2xl lg:max-w-none">
                             {services.map((service) => {
                                 const isSelected = selectedService.id === service.id;
 

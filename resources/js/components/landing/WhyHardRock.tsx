@@ -6,13 +6,13 @@ export default function WhyHardRock() {
     const isArabic = i18n.language === 'ar';
 
     return (
-        <section id="why-hardrock" className="relative pt-15 pb-20 md:pt-20 md:pb-20 lg:pb-64 overflow-hidden bg-white dark:bg-black">
+        <section id="why-hardrock" className="relative pt-15 pb-10 md:pb-20 md:pt-20 md:pb-20 lg:pb-64 overflow-hidden bg-white dark:bg-black">
             {/* Background Blurs - Small Circles */}
-            <div className="absolute top-10 ltr:right-20 rtl:left-20 w-32 h-32 bg-purple-500/30 dark:bg-purple-500/40 rounded-full blur-3xl" />
-            <div className="absolute top-40 ltr:right-60 rtl:left-60 w-24 h-24 bg-pink-500/25 dark:bg-pink-500/35 rounded-full blur-2xl" />
-            <div className="absolute bottom-20 ltr:left-10 rtl:right-10 w-40 h-40 bg-pink-500/30 dark:bg-pink-500/40 rounded-full blur-3xl" />
-            <div className="absolute bottom-60 ltr:left-40 rtl:right-40 w-28 h-28 bg-purple-500/25 dark:bg-purple-500/35 rounded-full blur-2xl" />
-            <div className="absolute top-1/2 ltr:right-32 rtl:left-32 w-36 h-36 bg-red-500/20 dark:bg-red-500/30 rounded-full blur-3xl" />
+            <div className="hidden lg:block absolute top-10 ltr:right-20 rtl:left-20 w-32 h-32 bg-purple-500/30 dark:bg-purple-500/40 rounded-full blur-3xl" />
+            <div className="hidden lg:block absolute top-40 ltr:right-60 rtl:left-60 w-24 h-24 bg-pink-500/25 dark:bg-pink-500/35 rounded-full blur-2xl" />
+            <div className="hidden lg:block absolute bottom-20 ltr:left-10 rtl:right-10 w-40 h-40 bg-pink-500/30 dark:bg-pink-500/40 rounded-full blur-3xl" />
+            <div className="hidden lg:block absolute bottom-60 ltr:left-40 rtl:right-40 w-28 h-28 bg-purple-500/25 dark:bg-purple-500/35 rounded-full blur-2xl" />
+            <div className="hidden lg:block absolute top-1/2 ltr:right-32 rtl:left-32 w-36 h-36 bg-red-500/20 dark:bg-red-500/30 rounded-full blur-3xl" />
 
             <div className="relative z-10 w-full px-8 sm:px-12 lg:px-16 xl:px-20">
                 <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-center">

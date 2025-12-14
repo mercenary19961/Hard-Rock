@@ -193,7 +193,7 @@ export default function ContactUs() {
     return (
         <section
             id="contact-us"
-            className="relative py-20 md:py-32 overflow-hidden bg-white dark:bg-black"
+            className="relative py-10 md:py-32 overflow-hidden bg-white dark:bg-black"
         >
             {/* Background Image - Position on far right/left edge, only half visible */}
             <div
