@@ -195,7 +195,7 @@ export default function Services() {
                         >
                             <div className="block group pointer-events-none">
                             {/* Title - Hidden on mobile, shown on desktop */}
-                            <h1 className={`hidden lg:block text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-black mb-10 md:mb-12 ${
+                            <h1 className={`hidden lg:block text-4xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-black mb-10 md:mb-12 ${
                                 isArabic ? 'font-tajawal' : 'font-sf-pro'
                             }`}>
                                 {isArabic ? (
@@ -243,12 +243,12 @@ export default function Services() {
                             </div>
 
                             {/* Service Description */}
-                            <div style={{ minHeight: '180px' }} className="max-w-lg mx-auto lg:mx-0">
+                            <div style={{ minHeight: '180px' }} className="max-w-2xl mx-auto lg:mx-0">
                                 <p
                                     className={`text-gray-700 dark:text-gray-300 mb-6 ${
                                         isArabic
-                                            ? 'text-lg md:text-xl lg:text-2xl xl:text-3xl font-tajawal font-normal'
-                                            : 'text-base md:text-lg lg:text-xl xl:text-2xl font-poppins font-normal'
+                                            ? 'text-lg md:text-xl lg:text-xl xl:text-2xl 2xl:text-3xl font-tajawal font-normal'
+                                            : 'text-base md:text-lg lg:text-lg xl:text-xl 2xl:text-2xl font-poppins font-normal'
                                     }`}
                                     style={{ lineHeight: '1.8' }}
                                 >
