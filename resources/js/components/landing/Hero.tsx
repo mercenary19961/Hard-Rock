@@ -30,7 +30,7 @@ export default function Hero() {
             {/* Background Wave */}
             <div className="hidden lg:block absolute ltr:bottom-12 ltr:left-0 rtl:bottom-0 rtl:right-0 ltr:origin-bottom-left rtl:origin-bottom-right lg:w-[40%] opacity-15 dark:opacity-40">
                 <img
-                    src="/images/bg wave.png"
+                    src="/images/bg wave.webp"
                     alt=""
                     className="w-full h-auto object-contain ltr:-rotate-45 rtl:rotate-45 ltr:translate-x-[-50%] ltr:translate-y-[20%] rtl:translate-x-[20%] rtl:translate-y-[20%]"
                 />
@@ -120,19 +120,42 @@ export default function Hero() {
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1, delay: 0.3 }}
-                        className="relative flex justify-center items-center"
+                        className="relative flex flex-col justify-center items-center"
                     >
                         <div className="relative w-full max-w-lg">
-                            {/* Glow effect behind image */}
-                            <div className="absolute inset-12 bg-gradient-to-br from-pink-500/30 via-purple-500/30 to-purple-600/30 blur-[85px] rounded-full" />
+                            {/* Glow effect behind image - reduced on mobile */}
+                            <div className="absolute inset-12 bg-gradient-to-br from-pink-500/10 via-purple-500/10 to-purple-600/10 blur-[40px] md:from-pink-500/30 md:via-purple-500/30 md:to-purple-600/30 md:blur-[85px] rounded-full" />
 
                             {/* Hero Icon */}
                             <img
-                                src="/images/hero-icon.webp"
+                                src="/images/hero-icon.webp" fetchPriority="high"
                                 alt="Digital Solutions"
                                 className="relative z-10 w-full h-auto drop-shadow-2xl animate-float"
                             />
                         </div>
+
+                        {/* "Reach The Peak" text - Mobile only */}
+                        <motion.h1
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.5 }}
+                            className={`lg:hidden text-center -mt-12 text-4xl xs:text-5xl sm:text-6xl font-bold ${
+                                isArabic ? 'font-tajawal' : 'font-sf-pro'
+                            }`}
+                            style={{ lineHeight: '1.5' }}
+                        >
+                            {isArabic ? (
+                                <>
+                                    <span className="text-black dark:text-white">اصل </span>
+                                    <span className="bg-gradient-to-r from-brand-purple to-brand-red bg-clip-text text-transparent">للقمة</span>
+                                </>
+                            ) : (
+                                <>
+                                    <span className="text-black dark:text-white">Reach The </span>
+                                    <span className="bg-gradient-to-r from-brand-purple to-brand-red bg-clip-text text-transparent">Peak</span>
+                                </>
+                            )}
+                        </motion.h1>
                     </motion.div>
                 </div>
             </div>
