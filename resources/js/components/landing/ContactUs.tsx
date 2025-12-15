@@ -226,9 +226,10 @@ export default function ContactUs() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
-                    className={`text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-12 md:mb-16 ${
+                    className={`text-5xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black mb-4 lg:mb-6 2xl:mb-16 ${
                         isArabic ? 'font-tajawal text-right' : 'font-sf-pro text-left'
                     }`}
+                    style={{ lineHeight: isArabic ? '1.6' : '1.2', paddingTop: isArabic ? '8px' : '0' }}
                 >
                     {isArabic ? (
                         <>
