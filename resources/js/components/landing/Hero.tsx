@@ -28,11 +28,11 @@ export default function Hero() {
             {/* <div className="absolute inset-0 bg-gradient-to-br from-white via-purple-50/30 to-pink-50/20 dark:hidden" /> */}
 
             {/* Background Wave */}
-            <div className="hidden lg:block absolute ltr:bottom-12 ltr:left-0 rtl:bottom-0 rtl:right-0 ltr:origin-bottom-left rtl:origin-bottom-right lg:w-[40%] opacity-15 dark:opacity-40">
+            <div className="hidden lg:block absolute ltr:bottom-12 ltr:left-0 rtl:bottom-12 rtl:right-0 ltr:origin-bottom-left rtl:origin-bottom-right lg:w-[40%] opacity-30 dark:opacity-60">
                 <img
                     src="/images/bg wave.webp"
                     alt=""
-                    className="w-full h-auto object-contain ltr:-rotate-45 rtl:rotate-45 ltr:translate-x-[-50%] ltr:translate-y-[20%] rtl:translate-x-[20%] rtl:translate-y-[20%]"
+                    className="w-full h-auto object-contain ltr:-rotate-45 rtl:-rotate-[155deg] ltr:translate-x-[-50%] ltr:translate-y-[20%] rtl:translate-x-[50%] rtl:translate-y-[20%]"
                 />
             </div>
 
@@ -65,7 +65,7 @@ export default function Hero() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.8, delay: 0.2 }}
-                                    className="text-2xl xs:text-3xl sm:text-4xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-black dark:text-white text-center mb-2 font-sf-pro"
+                                    className="text-2xl xs:text-3xl sm:text-4xl md:text-4xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-bold text-black dark:text-white text-center mb-2 font-sf-pro"
                                     style={{ lineHeight: '1.5' }}
                                 >
                                     {t('title.line1')}<br />
@@ -76,7 +76,7 @@ export default function Hero() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.8, delay: 0.3 }}
-                                    className="text-4xl xs:text-5xl sm:text-6xl md:text-6xl lg:text-6xl xl:text-7xl font-bold text-center mb-4 font-sf-pro"
+                                    className="text-4xl xs:text-5xl sm:text-6xl md:text-6xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-center mb-4 font-sf-pro"
                                     style={{ lineHeight: '1.5' }}
                                 >
                                     <span className="bg-gradient-to-r from-brand-purple to-brand-red bg-clip-text text-transparent">
