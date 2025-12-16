@@ -51,7 +51,13 @@ export default function Hero() {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, delay: 0.2 }}
                                 className="text-2xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-black dark:text-white text-center mb-6 font-tajawal"
-                                style={{ lineHeight: '1.6', paddingTop: '8px' }}
+                                style={{
+                                    lineHeight: '2',
+                                    paddingTop: '0.5em',
+                                    paddingBottom: '0.3em',
+                                    overflow: 'visible',
+                                    display: 'block'
+                                }}
                             >
                                 {t('title.line1')}<br />
                                 <span className="bg-gradient-to-r from-brand-purple to-brand-red bg-clip-text text-transparent">
@@ -141,7 +147,13 @@ export default function Hero() {
                             className={`lg:hidden text-center mt-4 text-4xl xs:text-5xl sm:text-6xl font-bold ${
                                 isArabic ? 'font-tajawal' : 'font-sf-pro'
                             }`}
-                            style={{ lineHeight: isArabic ? '1.6' : '1.5', paddingTop: isArabic ? '8px' : '0' }}
+                            style={isArabic ? {
+                                lineHeight: '2',
+                                paddingTop: '0.5em',
+                                paddingBottom: '0.3em',
+                                overflow: 'visible',
+                                display: 'block'
+                            } : { lineHeight: '1.5' }}
                         >
                             {isArabic ? (
                                 <>

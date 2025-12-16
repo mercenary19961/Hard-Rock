@@ -46,7 +46,13 @@ export default function WhyHardRock() {
                         viewport={{ once: true }}
                         className={`${isArabic ? 'lg:order-2 text-right' : 'lg:order-2 text-left'}`}
                     >
-                        <h2 className={`text-5xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black mb-8 ${isArabic ? 'font-tajawal' : 'font-sf-pro'}`} style={isArabic ? { lineHeight: '1.6', paddingTop: '8px' } : {}}>
+                        <h2 className={`text-5xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black mb-8 ${isArabic ? 'font-tajawal' : 'font-sf-pro'}`} style={isArabic ? {
+                            lineHeight: '2',
+                            paddingTop: '0.5em',
+                            paddingBottom: '0.3em',
+                            overflow: 'visible',
+                            display: 'block'
+                        } : {}}>
                             <span className="text-black dark:text-white">
                                 {t('title.line1')}
                             </span>
