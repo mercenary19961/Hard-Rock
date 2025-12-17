@@ -11,6 +11,9 @@ class ContactController extends Controller
 {
     public function store(Request $request)
     {
+        $startTime = microtime(true);
+        Log::info('Form submission received', ['timestamp' => now()]);
+
         try {
             $validated = $request->validate([
                 'personalName' => 'required|string|min:2',
@@ -20,6 +23,9 @@ class ContactController extends Controller
                 'services' => 'nullable|array',
                 'moreDetails' => 'nullable|string',
             ]);
+
+            $validationTime = microtime(true);
+            Log::info('Validation completed', ['duration_ms' => round(($validationTime - $startTime) * 1000, 2)]);
 
             // Create contact record
             $contact = Contact::create([
@@ -31,12 +37,22 @@ class ContactController extends Controller
                 'more_details' => $validated['moreDetails'] ?? null,
             ]);
 
-            Log::info('Contact created successfully', ['id' => $contact->id, 'email' => $contact->email]);
+            $dbTime = microtime(true);
+            Log::info('Contact created successfully', [
+                'id' => $contact->id,
+                'email' => $contact->email,
+                'duration_ms' => round(($dbTime - $validationTime) * 1000, 2)
+            ]);
 
             // Dispatch job to process email and ClickUp task asynchronously
             ProcessContactSubmission::dispatch($contact);
 
-            Log::info('Contact processing job dispatched', ['contact_id' => $contact->id]);
+            $dispatchTime = microtime(true);
+            Log::info('Contact processing job dispatched', [
+                'contact_id' => $contact->id,
+                'duration_ms' => round(($dispatchTime - $dbTime) * 1000, 2),
+                'total_ms' => round(($dispatchTime - $startTime) * 1000, 2)
+            ]);
         } catch (\Exception $e) {
             Log::error('Failed to create contact', [
                 'error' => $e->getMessage(),
