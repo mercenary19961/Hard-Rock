@@ -14,7 +14,7 @@ interface FormData {
 }
 
 export default function ContactUs() {
-    const { t, i18n } = useTranslation('contactUs');
+    const { i18n } = useTranslation('contactUs');
     const { theme } = useTheme();
     const isArabic = i18n.language === 'ar';
 
@@ -172,28 +172,10 @@ export default function ContactUs() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (isFormValid()) {
-            const startTime = performance.now();
-            console.log('[FORM] Submission started');
-
             post(route('contact.store'), {
                 preserveScroll: true,
                 preserveState: true,
-                only: [],
-                async: true,
-                onBefore: () => {
-                    console.log('[INERTIA] onBefore - About to make request');
-                },
-                onStart: () => {
-                    console.log('[INERTIA] onStart - Request started');
-                },
-                onProgress: () => {
-                    console.log('[INERTIA] onProgress - Upload progress');
-                },
                 onSuccess: () => {
-                    const endTime = performance.now();
-                    const duration = Math.round(endTime - startTime);
-                    console.log(`[FORM] Submission completed in ${duration}ms`);
-
                     // Track Facebook Pixel Lead event
                     if (typeof window !== 'undefined' && (window as any).fbq) {
                         (window as any).fbq('track', 'Lead', {
@@ -212,15 +194,8 @@ export default function ContactUs() {
                     setShowNotification(true);
                     setTimeout(() => setShowNotification(false), 5000);
                 },
-                onFinish: () => {
-                    const endTime = performance.now();
-                    const duration = Math.round(endTime - startTime);
-                    console.log(`[INERTIA] onFinish - Request finished after ${duration}ms`);
-                },
-                onError: (errors) => {
-                    const endTime = performance.now();
-                    const duration = Math.round(endTime - startTime);
-                    console.error(`[FORM] Submission failed after ${duration}ms:`, errors);
+                onError: () => {
+                    // Form validation errors are handled by Inertia automatically
                 }
             });
         }
@@ -735,6 +710,47 @@ export default function ContactUs() {
                     </button>
                 </div>
             </div>
+
+            {/* Loading Overlay */}
+            <AnimatePresence>
+                {processing && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+                    >
+                        <motion.div
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.8, opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="bg-white dark:bg-gray-900 rounded-3xl p-8 shadow-2xl flex flex-col items-center gap-6"
+                        >
+                            {/* Spinning loader */}
+                            <div className="relative w-20 h-20">
+                                <div className="absolute inset-0 rounded-full border-4 border-gray-200 dark:border-gray-700"></div>
+                                <div className="absolute inset-0 rounded-full border-4 border-t-brand-purple border-r-brand-red border-b-transparent border-l-transparent animate-spin"></div>
+                            </div>
+
+                            {/* Loading text */}
+                            <div className="text-center">
+                                <h3 className={`text-xl font-bold text-black dark:text-white mb-2 ${
+                                    isArabic ? 'font-tajawal' : 'font-poppins'
+                                }`}>
+                                    {isArabic ? 'جاري الإرسال...' : 'Submitting...'}
+                                </h3>
+                                <p className={`text-sm text-gray-600 dark:text-gray-400 ${
+                                    isArabic ? 'font-tajawal' : 'font-poppins'
+                                }`}>
+                                    {isArabic ? 'يرجى الانتظار' : 'Please wait'}
+                                </p>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             {/* Success Notification Toast */}
             <AnimatePresence>
