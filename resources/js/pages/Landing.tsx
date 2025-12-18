@@ -20,6 +20,15 @@ export default function Landing() {
                         })(window,document,'script','dataLayer','GTM-TJTKSH9J');`
                     }}
                 />
+                <script async src="https://www.googletagmanager.com/gtag/js?id=G-TFQFC7Q08R" />
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', 'G-TFQFC7Q08R');`
+                    }}
+                />
             </Head>
             
             <SmoothScroll>
