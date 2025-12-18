@@ -139,13 +139,27 @@ export default function ContactUs() {
         'حلول البرمجيات والذكاء الاصطناعي',
     ];
 
+    // Map Arabic services to English for storage
+    const serviceMapping: Record<string, string> = {
+        'الحملات الإعلانية': 'Paid Ads',
+        'التواصل الاجتماعي': 'Social Media',
+        'الاستماع الرقمي': 'Social Listening',
+        'البحث الكمي والنوعي': 'Q&Q Research',
+        'العلاقات العامة': 'PR Services',
+        'العلامة التجارية': 'Branding',
+        'تحسين محركات البحث': 'SEO',
+        'حلول البرمجيات والذكاء الاصطناعي': 'Software & AI Solutions',
+    };
+
     const services = isArabic ? availableServicesAr : availableServices;
 
-    const handleServiceToggle = (service: string) => {
-        const isSelected = data.services.includes(service);
+    const handleServiceToggle = (displayService: string) => {
+        // Always store in English
+        const englishService = isArabic ? serviceMapping[displayService] : displayService;
+        const isSelected = data.services.includes(englishService);
         const newServices = isSelected
-            ? data.services.filter((s: string) => s !== service)
-            : [service, ...data.services];
+            ? data.services.filter((s: string) => s !== englishService)
+            : [englishService, ...data.services];
         setData('services', newServices);
     };
 
