@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from '@inertiajs/react';
 
 export default function Services() {
     const { t, i18n } = useTranslation('services');
@@ -197,7 +198,10 @@ export default function Services() {
                             className={`w-full max-w-2xl lg:max-w-none ${isArabic ? 'text-center lg:text-right' : 'text-center lg:text-left'}`}
                             dir={isArabic ? 'rtl' : 'ltr'}
                         >
-                            <div className="block group pointer-events-none">
+                            <Link
+                                href={`/services/${selectedService.link}`}
+                                className="block group cursor-pointer"
+                            >
                             {/* Title - Hidden on mobile, shown on desktop */}
                             <h1 className={`hidden lg:block text-4xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-black mb-0 lg:mt-0 ${
                                 isArabic ? 'font-tajawal' : 'font-sf-pro'
@@ -220,7 +224,7 @@ export default function Services() {
 
                             {/* Service Image */}
                             <div
-                                className="relative w-full max-w-sm mb-8 flex items-center justify-center mx-auto lg:mx-0"
+                                className="relative w-full max-w-sm mb-8 flex items-center justify-center mx-auto lg:mx-0 transition-transform duration-300 group-hover:scale-105"
                                 style={{
                                     height: '280px',
                                     marginLeft: window.innerWidth >= 1024 ? imageMargin.left : 'auto',
@@ -228,7 +232,7 @@ export default function Services() {
                                 }}
                             >
                                 {/* Glow effect */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/20 to-brand-red/20 rounded-full blur-2xl" />
+                                <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/20 to-brand-red/20 rounded-full blur-2xl group-hover:from-brand-purple/30 group-hover:to-brand-red/30 transition-all duration-300" />
 
                                 {/* Light mode image */}
                                 <img
@@ -260,7 +264,7 @@ export default function Services() {
                                     {selectedService.description}
                                 </p>
                             </div>
-                        </div>
+                        </Link>
                         </motion.div>
                     </div>
                 </div>

@@ -7,12 +7,14 @@ import enCommon from './locales/en/common.json';
 import enHero from './locales/en/hero.json';
 import enWhyHardRock from './locales/en/whyHardRock.json';
 import enServices from './locales/en/services.json';
+import enServiceDetail from './locales/en/serviceDetail.json';
 import enContactUs from './locales/en/contactUs.json';
 import enFooter from './locales/en/footer.json';
 import arCommon from './locales/ar/common.json';
 import arHero from './locales/ar/hero.json';
 import arWhyHardRock from './locales/ar/whyHardRock.json';
 import arServices from './locales/ar/services.json';
+import arServiceDetail from './locales/ar/serviceDetail.json';
 import arContactUs from './locales/ar/contactUs.json';
 import arFooter from './locales/ar/footer.json';
 
@@ -26,6 +28,7 @@ i18n
         hero: enHero,
         whyHardRock: enWhyHardRock,
         services: enServices,
+        serviceDetail: enServiceDetail,
         contactUs: enContactUs,
         footer: enFooter,
       },
@@ -34,6 +37,7 @@ i18n
         hero: arHero,
         whyHardRock: arWhyHardRock,
         services: arServices,
+        serviceDetail: arServiceDetail,
         contactUs: arContactUs,
         footer: arFooter,
       },
