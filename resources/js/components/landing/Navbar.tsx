@@ -1,10 +1,42 @@
 import { Link } from '@inertiajs/react';
 import { motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import ThemeToggle from '@/components/ThemeToggle';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+
+const MenuIcon = ({ className }: { className?: string }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <line x1="4" x2="20" y1="12" y2="12" />
+    <line x1="4" x2="20" y1="6" y2="6" />
+    <line x1="4" x2="20" y1="18" y2="18" />
+  </svg>
+);
+
+const XIcon = ({ className }: { className?: string }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M18 6 6 18" />
+    <path d="m6 6 12 12" />
+  </svg>
+);
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -67,7 +99,7 @@ export default function Navbar() {
                             onClick={() => setIsOpen(!isOpen)}
                             className="inline-flex items-center justify-center p-2 rounded-md text-black dark:text-white hover:text-pink-500 focus:outline-none transition-colors"
                         >
-                            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                            {isOpen ? <XIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
                         </button>
                     </div>
                 </div>

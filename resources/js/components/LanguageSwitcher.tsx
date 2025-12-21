@@ -1,5 +1,21 @@
 import { useTranslation } from 'react-i18next';
-import { Globe } from 'lucide-react';
+
+const GlobeIcon = ({ className }: { className?: string }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <circle cx="12" cy="12" r="10" />
+    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+    <path d="M2 12h20" />
+  </svg>
+);
 
 export default function LanguageSwitcher() {
   const { i18n } = useTranslation();
@@ -20,7 +36,7 @@ export default function LanguageSwitcher() {
       className="flex items-center gap-1.5 md:gap-2 px-2 md:px-3 py-1.5 md:py-2 rounded-lg border border-gray-300 dark:border-white/20 hover:border-brand-purple dark:hover:border-brand-purple transition-all text-black dark:text-white hover:text-brand-purple dark:hover:text-brand-purple"
       aria-label="Switch language"
     >
-      <Globe className="w-3.5 h-3.5 md:w-4 md:h-4" />
+      <GlobeIcon className="w-3.5 h-3.5 md:w-4 md:h-4" />
       <span className="text-xs md:text-sm font-medium">
         {currentLang === 'en' ? 'عربي' : 'EN'}
       </span>
