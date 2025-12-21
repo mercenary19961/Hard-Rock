@@ -10,6 +10,7 @@ import { ThemeProvider } from '@/contexts/ThemeContext';
 import Landing from '@/pages/Landing';
 import Login from '@/pages/Auth/Login';
 import AdminContacts from '@/pages/Admin/Contacts';
+import ServiceDetail from '@/pages/ServiceDetail';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -18,6 +19,7 @@ const pages: Record<string, any> = {
     'Landing': Landing,
     'Auth/Login': Login,
     'Admin/Contacts': AdminContacts,
+    'ServiceDetail': ServiceDetail,
 };
 
 createInertiaApp({

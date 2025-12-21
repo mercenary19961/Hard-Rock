@@ -7,42 +7,42 @@
       "name": "Paid Ads",
       "description": "We run data-driven Meta and Google Ads to maximize visibility, boost conversions, and achieve measurable results across major platforms.",
       "image": "/images/services/paid-ads-2.webp",
-      "link": "/services/paid-ads"
+      "link": "paid-ads"
     },
     {
       "id": "social-media",
       "name": "Social Media",
       "description": "End-to-end social media management delivering high-impact content and continuous growth through strategic, data driven execution",
       "image": "/images/services/social-media-2.webp",
-      "link": "/services/social-media"
+      "link": "social-media"
     },
     {
       "id": "seo",
       "name": "SEO",
       "description": "Our SEO services use data-driven strategies and optimization to boost visibility, increase organic traffic, and deliver sustainable long-term search performance.",
       "image": "/images/services/seo-2.webp",
-      "link": "/services/seo"
+      "link": "seo"
     },
     {
       "id": "branding",
       "name": "Branding",
       "description": "We build strong, memorable brand identities through strategy and impactful design including brand strategy, logo design, voice, visuals and messaging for a unified presence across all platforms.",
       "image": "/images/services/branding-2.webp",
-      "link": "/services/branding"
+      "link": "branding"
     },
     {
       "id": "software-ai",
       "name": "Software & AI Solutions",
       "description": "Hard Rock delivers advanced AI Agent and Software solutions that enhance performance, streamline operations, and support scalable, efficient growth.",
       "image": "/images/services/ai-2.webp",
-      "link": "/services/software-ai"
+      "link": "software-ai"
     },
     {
       "id": "pr-social-listening",
       "name": "PR & Social Listening",
       "description": "Hard Rock delivers integrated digital PR and advanced social listening solutions to strengthen reputation, increase visibility, and uncover real-time opportunities.",
       "image": "/images/services/pr-2.webp",
-      "link": "/services/pr-social-listening"
+      "link": "pr-social-listening"
     }
   ]
 }

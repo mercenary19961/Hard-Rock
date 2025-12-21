@@ -9,6 +9,19 @@ Route::get('/', function () {
     return Inertia::render('Landing');
 })->name('home');
 
+// Service Detail Pages
+Route::get('/services/{slug}', function ($slug) {
+    $validSlugs = ['social-media', 'paid-ads', 'seo', 'pr-social-listening', 'branding', 'software-ai'];
+
+    if (!in_array($slug, $validSlugs)) {
+        abort(404);
+    }
+
+    return Inertia::render('ServiceDetail', [
+        'slug' => $slug
+    ]);
+})->name('service.detail');
+
 // Contact Form Submission
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
