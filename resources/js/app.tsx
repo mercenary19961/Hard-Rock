@@ -10,9 +10,15 @@ import { ThemeProvider } from '@/contexts/ThemeContext';
 // Import Landing page eagerly (always needed on home page)
 import Landing from '@/pages/Landing';
 
-// Lazy load admin pages (code splitting - only loads when needed)
+// Lazy load auth pages (code splitting - only loads when needed)
 const Login = lazy(() => import('@/pages/Auth/Login'));
-const AdminContacts = lazy(() => import('@/pages/Admin/Contacts'));
+const ForgotPassword = lazy(() => import('@/pages/Auth/ForgotPassword'));
+const ResetPassword = lazy(() => import('@/pages/Auth/ResetPassword'));
+
+// Lazy load dashboard pages
+const DashboardIndex = lazy(() => import('@/pages/Dashboard/Index'));
+const DashboardContacts = lazy(() => import('@/pages/Dashboard/Contacts'));
+const DashboardUsers = lazy(() => import('@/pages/Dashboard/Users'));
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -20,7 +26,11 @@ const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 const pages: Record<string, any> = {
     'Landing': Landing,
     'Auth/Login': Login,
-    'Admin/Contacts': AdminContacts,
+    'Auth/ForgotPassword': ForgotPassword,
+    'Auth/ResetPassword': ResetPassword,
+    'Dashboard/Index': DashboardIndex,
+    'Dashboard/Contacts': DashboardContacts,
+    'Dashboard/Users': DashboardUsers,
 };
 
 createInertiaApp({
