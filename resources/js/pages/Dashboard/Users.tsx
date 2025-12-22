@@ -53,6 +53,22 @@ const UserIcon = ({ className }: { className?: string }) => (
     </svg>
 );
 
+const EyeIcon = ({ className }: { className?: string }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+        <circle cx="12" cy="12" r="3" />
+    </svg>
+);
+
+const EyeOffIcon = ({ className }: { className?: string }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <path d="m2 2 20 20" />
+        <path d="M6.71 6.71a10.75 10.75 0 0 0-4.648 5.639 1 1 0 0 0 0 .696 10.747 10.747 0 0 0 18.858 4.135" />
+        <path d="M18 18a10.75 10.75 0 0 0 3.938-5.639 1 1 0 0 0 0-.696A10.75 10.75 0 0 0 12.001 2c-1.5 0-2.924.306-4.222.852" />
+        <path d="M15.536 15.536a3 3 0 0 1-4.072-4.072" />
+    </svg>
+);
+
 interface TeamUser {
     id: number;
     name: string;
@@ -91,6 +107,7 @@ export default function Users({ users }: UsersProps) {
     const [processing, setProcessing] = useState(false);
     const [deletingId, setDeletingId] = useState<number | null>(null);
     const [errors, setErrors] = useState<FormErrors>({});
+    const [showPassword, setShowPassword] = useState(false);
     const [formData, setFormData] = useState<UserFormData>({
         name: '',
         email: '',
@@ -122,6 +139,7 @@ export default function Users({ users }: UsersProps) {
         setEditingUser(null);
         setFormData({ name: '', email: '', password: '', is_admin: false });
         setErrors({});
+        setShowPassword(false);
     };
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -352,14 +370,28 @@ export default function Users({ users }: UsersProps) {
                                             </span>
                                         )}
                                     </Label>
-                                    <Input
-                                        id="password"
-                                        type="password"
-                                        value={formData.password}
-                                        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                                        placeholder="••••••••"
-                                        required={!editingUser}
-                                    />
+                                    <div className="relative">
+                                        <Input
+                                            id="password"
+                                            type={showPassword ? "text" : "password"}
+                                            value={formData.password}
+                                            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                                            placeholder="••••••••"
+                                            required={!editingUser}
+                                            className="pr-10"
+                                        />
+                                        <button
+                                            type="button"
+                                            onClick={() => setShowPassword(!showPassword)}
+                                            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+                                        >
+                                            {showPassword ? (
+                                                <EyeOffIcon className="size-5" />
+                                            ) : (
+                                                <EyeIcon className="size-5" />
+                                            )}
+                                        </button>
+                                    </div>
                                     {errors.password && (
                                         <p className="text-sm text-red-600 dark:text-red-400">{errors.password}</p>
                                     )}
