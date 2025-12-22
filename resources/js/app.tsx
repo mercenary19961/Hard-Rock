@@ -18,6 +18,7 @@ const ResetPassword = lazy(() => import('@/pages/Auth/ResetPassword'));
 // Lazy load dashboard pages
 const DashboardIndex = lazy(() => import('@/pages/Dashboard/Index'));
 const DashboardContacts = lazy(() => import('@/pages/Dashboard/Contacts'));
+const DashboardUsers = lazy(() => import('@/pages/Dashboard/Users'));
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -29,6 +30,7 @@ const pages: Record<string, any> = {
     'Auth/ResetPassword': ResetPassword,
     'Dashboard/Index': DashboardIndex,
     'Dashboard/Contacts': DashboardContacts,
+    'Dashboard/Users': DashboardUsers,
 };
 
 createInertiaApp({
