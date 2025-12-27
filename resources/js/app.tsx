@@ -4,22 +4,17 @@ import './i18n'; // Initialize i18n
 
 import { createInertiaApp } from '@inertiajs/react';
 import { createRoot } from 'react-dom/client';
-import { lazy, Suspense } from 'react';
 import { ThemeProvider } from '@/contexts/ThemeContext';
-import { PageLoader, SuspenseLoader } from '@/components/ui/page-loader';
+import { PageLoader } from '@/components/ui/page-loader';
 
-// Import Landing page eagerly (always needed on home page)
+// Import all pages eagerly (vendor chunks handle code splitting)
 import Landing from '@/pages/Landing';
-
-// Lazy load auth pages (code splitting - only loads when needed)
-const Login = lazy(() => import('@/pages/Auth/Login'));
-const ForgotPassword = lazy(() => import('@/pages/Auth/ForgotPassword'));
-const ResetPassword = lazy(() => import('@/pages/Auth/ResetPassword'));
-
-// Lazy load dashboard pages
-const DashboardIndex = lazy(() => import('@/pages/Dashboard/Index'));
-const DashboardContacts = lazy(() => import('@/pages/Dashboard/Contacts'));
-const DashboardUsers = lazy(() => import('@/pages/Dashboard/Users'));
+import Login from '@/pages/Auth/Login';
+import ForgotPassword from '@/pages/Auth/ForgotPassword';
+import ResetPassword from '@/pages/Auth/ResetPassword';
+import DashboardIndex from '@/pages/Dashboard/Index';
+import DashboardContacts from '@/pages/Dashboard/Contacts';
+import DashboardUsers from '@/pages/Dashboard/Users';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -51,9 +46,7 @@ createInertiaApp({
         root.render(
             <ThemeProvider>
                 <PageLoader />
-                <Suspense fallback={<SuspenseLoader />}>
-                    <App {...props} />
-                </Suspense>
+                <App {...props} />
             </ThemeProvider>
         );
     },
