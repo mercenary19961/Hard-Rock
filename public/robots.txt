@@ -14,3 +14,6 @@ Sitemap: https://hardrock-co.com/sitemap.xml
 
 # Crawl delay for polite bots
 Crawl-delay: 1
+
+# AI Training Preference: search=yes, ai-train=no
+# (Not using Content-signal directive as it's not yet a standard)
